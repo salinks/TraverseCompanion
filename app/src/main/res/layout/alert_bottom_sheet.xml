@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:background="@drawable/bg_bottomsheet">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvTitle"
+            style="@style/big_text_bold"
+            android:gravity="center"
+            android:textColor="@color/themeTextColor"
+            android:text="Title"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_30sdp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/medium_text"
+            android:id="@+id/tvmessage"
+            android:textColor="@color/themeTextColor"
+            android:text="message ?"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/_10sdp"
+
+            android:layout_marginHorizontal="@dimen/_10sdp"/>
+        <ImageView
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:id="@+id/ivImage"
+            android:visibility="gone"/>
+        <LinearLayout
+            android:id="@+id/lnrButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginVertical="@dimen/_20sdp">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btCancel"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/_40sdp"
+                style="@style/button_text"
+                android:text="Cancel"
+                app:cornerRadius="@dimen/_10sdp"
+                android:textColor="@color/themeTextColor"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/themeTextColor"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:maxLines="1"
+                app:autoSizeMaxTextSize="@dimen/_11sdp"
+                app:autoSizeMinTextSize="@dimen/_5sdp"
+                app:autoSizeTextType="uniform"/>
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btDone"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/_40sdp"
+                style="@style/button_text"
+                android:text="ok"
+
+                android:textColor="@color/colorPrimary"
+                app:backgroundTint="@color/colorPrimary"
+
+                app:cornerRadius="@dimen/_8sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:maxLines="1"
+                app:autoSizeMaxTextSize="@dimen/_11sdp"
+                app:autoSizeMinTextSize="@dimen/_5sdp"
+                app:autoSizeTextType="uniform"
+               />
+        </LinearLayout>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnOk"
+            android:layout_width="wrap_content"
+            android:layout_marginVertical="@dimen/_20sdp"
+            android:layout_height="@dimen/_40sdp"
+            style="@style/button_text"
+            android:text="Cancel"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            app:backgroundTint="@color/colorPrimary"
+            app:cornerRadius="@dimen/_8sdp"
+           android:paddingHorizontal="@dimen/_25sdp"/>
+    </LinearLayout>
+</layout>
