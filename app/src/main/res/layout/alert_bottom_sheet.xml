@@ -65,8 +65,7 @@
                 android:layout_height="@dimen/_40sdp"
                 style="@style/button_text"
                 android:text="ok"
-
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/white"
                 app:backgroundTint="@color/colorPrimary"
 
                 app:cornerRadius="@dimen/_8sdp"

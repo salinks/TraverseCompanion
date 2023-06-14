@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/relRoot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            android:layout_marginVertical="@dimen/_2sdp"
+            android:elevation="@dimen/_1sdp"
+
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/_4sdp"
+            app:cardElevation="@dimen/_3sdp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/_5sdp">
+
+                <TextView
+                    android:id="@+id/tvUserGroupName"
+                    style="@style/big_text_bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_10sdp" />
+
+                <TextView
+                    android:id="@+id/tvStatus"
+                    style="@style/medium_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_8sdp" />
+
+
+                <RelativeLayout
+                    android:id="@+id/relButtons"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_5sdp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="@dimen/_2sdp">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnEnable"
+                            style="@style/medium_text"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_marginHorizontal="@dimen/_2sdp"
+                            android:layout_weight="1"
+                            android:backgroundTint="@color/green"
+                            android:text="Enable"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_8sdp"
+                            android:visibility="gone"
+                            app:cornerRadius="@dimen/_3sdp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnDisable"
+                            style="@style/medium_text"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_marginHorizontal="@dimen/_2sdp"
+                            android:layout_weight="1"
+                            android:backgroundTint="@color/yellow_warning"
+                            android:text="Disable"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_8sdp"
+                            android:visibility="gone"
+                            app:cornerRadius="@dimen/_3sdp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnEdit"
+                            style="@style/medium_text"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_marginHorizontal="@dimen/_2sdp"
+                            android:layout_weight="1"
+                            android:backgroundTint="@color/colorPrimary"
+                            android:text="Edit"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_8sdp"
+                            app:cornerRadius="@dimen/_3sdp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnDelete"
+                            style="@style/medium_text"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_marginHorizontal="@dimen/_2sdp"
+                            android:layout_weight="1"
+                            android:backgroundTint="@color/red"
+                            android:text="Delete"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_8sdp"
+                            app:cornerRadius="@dimen/_3sdp" />
+
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </RelativeLayout>
+</layout>

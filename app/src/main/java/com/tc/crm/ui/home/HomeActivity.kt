@@ -16,6 +16,7 @@ import com.tc.crm.databinding.ActivityHomeBinding
 import com.tc.crm.model.fcm.RegisterFCMRequest
 import com.tc.crm.model.home.dashboard.DashboardRequest
 import com.tc.crm.model.home.dashboard.DashboardResponse
+import com.tc.crm.ui.contents.userGroups.UserGroupsFragment
 import com.tc.crm.ui.masters.countries.CountriesFragment
 import com.tc.crm.utils.AnimationUtil
 import com.tc.crm.utils.DefValues
@@ -448,7 +449,8 @@ class HomeActivity : BaseActivity(), HomeView, OnClickListener {
             }
 
             R.id.relUserGroups -> {
-
+                showHideDrawer()
+                pushFragments(UserGroupsFragment())
             }
 
             R.id.relSourceCategory -> {
@@ -556,10 +558,20 @@ class HomeActivity : BaseActivity(), HomeView, OnClickListener {
                 if (fragment1 != null && fragment1.isVisible) {
                     pushFragments(HomeFragment())
                 }
+            } else if (f is UserGroupsFragment) {
+                val fragment1 =
+                    supportFragmentManager.findFragmentById(R.id.content_frame) as UserGroupsFragment?
+                if (fragment1 != null && fragment1.isVisible) {
+                    pushFragments(HomeFragment())
+                }
             }  else {
                 super.onBackPressed()
             }
         }
+    }
+
+    fun logout() {
+
     }
 
 

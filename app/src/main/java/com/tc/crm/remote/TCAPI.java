@@ -11,6 +11,8 @@ import com.tc.crm.model.home.dashboard.DashboardRequest;
 import com.tc.crm.model.home.dashboard.DashboardResponse;
 import com.tc.crm.model.login.LoginRequest;
 import com.tc.crm.model.login.LoginResponse;
+import com.tc.crm.model.userGroups.UserGroupsRequest;
+import com.tc.crm.model.userGroups.UserGroupsResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -25,19 +27,34 @@ public interface TCAPI {
 
     @POST("dashboard")
     Call<DashboardResponse> getDashboard(@Body DashboardRequest dataModal);
+
     @POST("countryMaster")
     Call<CountriesResponse> getCountryMasters(@Body CommonRequest dataModal);
 
 
- @POST("enableDisableCountryMaster")
+    @POST("enableDisableCountryMaster")
     Call<CommonResult> enableDisableCountryMaster(@Body EnableDisableRequest dataModal);
 
- @POST("createCountryMaster")
+    @POST("createCountryMaster")
     Call<CommonResult> createCountryMaster(@Body CountryRequest dataModal);
 
- @POST("updateCountryMaster")
+    @POST("updateCountryMaster")
     Call<CommonResult> updateCountryMaster(@Body CountryRequest dataModal);
 
+    @POST("userGroups")
+    Call<UserGroupsResponse> getUserGroups(@Body CommonRequest dataModal);
+
+    @POST("enableDisableUserGroup")
+    Call<CommonResult> enableDisableUserGroup(@Body EnableDisableRequest dataModal);
+
+    @POST("createUserGroup")
+    Call<CommonResult> createUserGroup(@Body UserGroupsRequest dataModal);
+
+    @POST("updateUserGroup")
+    Call<CommonResult> updateUserGroup(@Body UserGroupsRequest dataModal);
+
+    @POST("deleteUserGroup")
+    Call<CommonResult> deleteUserGroup(@Body EnableDisableRequest dataModal);
 
 
 }
