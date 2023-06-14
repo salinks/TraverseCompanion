@@ -5,12 +5,15 @@ import com.tc.crm.data.model.CommonResult;
 import com.tc.crm.data.model.EnableDisableRequest;
 import com.tc.crm.model.countries.CountriesResponse;
 import com.tc.crm.model.countries.CountryRequest;
+import com.tc.crm.model.countryList.CountryListResponse;
 import com.tc.crm.model.fcm.FCMResponse;
 import com.tc.crm.model.fcm.RegisterFCMRequest;
 import com.tc.crm.model.home.dashboard.DashboardRequest;
 import com.tc.crm.model.home.dashboard.DashboardResponse;
 import com.tc.crm.model.login.LoginRequest;
 import com.tc.crm.model.login.LoginResponse;
+import com.tc.crm.model.sourceCategory.SourceCategoryRequest;
+import com.tc.crm.model.sourceCategory.SourceCategoryResponse;
 import com.tc.crm.model.userGroups.UserGroupsRequest;
 import com.tc.crm.model.userGroups.UserGroupsResponse;
 
@@ -55,6 +58,27 @@ public interface TCAPI {
 
     @POST("deleteUserGroup")
     Call<CommonResult> deleteUserGroup(@Body EnableDisableRequest dataModal);
+
+    @POST("sourceCategory")
+    Call<SourceCategoryResponse> getSourceCategory(@Body CommonRequest dataModal);
+
+    @POST("enableDisableSourceCategory")
+    Call<CommonResult> enableDisableSourceCategory(@Body EnableDisableRequest dataModal);
+
+    @POST("deleteSourceCategory")
+    Call<CommonResult> deleteSourceCategory(@Body EnableDisableRequest dataModal);
+
+    @POST("createSourceCategory")
+    Call<CommonResult> createSourceCategory(@Body SourceCategoryRequest dataModal);
+
+    @POST("updateSourceCategory")
+    Call<CommonResult> updateSourceCategory(@Body SourceCategoryRequest dataModal);
+
+    @POST("countryList")
+    Call<CountryListResponse> getCountryList(@Body CommonRequest dataModal);
+
+    @POST("enableDisableCountryList")
+    Call<CommonResult> enableDisableCountryList(@Body EnableDisableRequest dataModal);
 
 
 }

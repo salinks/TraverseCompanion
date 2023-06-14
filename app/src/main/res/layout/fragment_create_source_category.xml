@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f0f0f0"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:background="@color/colorPrimary">
+
+            <TextView
+                android:id="@+id/appTitle"
+                style="@style/medium_text"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
+                android:gravity="start|center"
+                android:paddingStart="?actionBarSize"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12sdp" />
+
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:padding="@dimen/_12sdp"
+                android:src="@drawable/ic_cancel"
+                android:visibility="visible"
+                app:tint="@color/white" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/medium_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="Source Category Name"
+                android:textSize="@dimen/_8sdp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+
+                android:layout_margin="@dimen/_2sdp"
+                android:elevation="@dimen/_1sdp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/_4sdp"
+                app:cardElevation="@dimen/_3sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_5sdp">
+
+                    <EditText
+                        android:id="@+id/etUSourceCategoryName"
+                        style="@style/medium_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:hint="Source Category Name"
+                        android:imeOptions="actionDone"
+                        android:inputType="textPersonName"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:paddingHorizontal="@dimen/_5sdp"
+                        android:textSize="@dimen/_10sdp" />
+
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:orientation="horizontal">
+
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:id="@+id/cbHasValues"
+                    style="@style/medium_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:text="Has Values"
+                    android:buttonTint="@color/colorPrimary"
+                    android:textColor="@color/themeTextColor"
+                    android:textSize="@dimen/_10sdp" />
+
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:id="@+id/cbInputRequired"
+                    style="@style/medium_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_weight="5"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:buttonTint="@color/colorPrimary"
+                    android:text="Input Required"
+                    android:textColor="@color/themeTextColor"
+                    android:textSize="@dimen/_10sdp" />
+
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCreate"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_15sdp"
+                style="@style/medium_text"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_11sdp"
+                app:cornerRadius="@dimen/_5sdp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_300sdp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

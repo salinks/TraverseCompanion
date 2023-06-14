@@ -16,6 +16,8 @@ import com.tc.crm.databinding.ActivityHomeBinding
 import com.tc.crm.model.fcm.RegisterFCMRequest
 import com.tc.crm.model.home.dashboard.DashboardRequest
 import com.tc.crm.model.home.dashboard.DashboardResponse
+import com.tc.crm.ui.contents.countryList.CountryListFragment
+import com.tc.crm.ui.contents.sourceCategory.SourceCategoryFragment
 import com.tc.crm.ui.contents.userGroups.UserGroupsFragment
 import com.tc.crm.ui.masters.countries.CountriesFragment
 import com.tc.crm.utils.AnimationUtil
@@ -449,16 +451,21 @@ class HomeActivity : BaseActivity(), HomeView, OnClickListener {
             }
 
             R.id.relUserGroups -> {
+                handleSystemMenuItems()
                 showHideDrawer()
                 pushFragments(UserGroupsFragment())
             }
 
             R.id.relSourceCategory -> {
-
+                handleSystemMenuItems()
+                showHideDrawer()
+                pushFragments(SourceCategoryFragment())
             }
 
             R.id.relCountryData -> {
-
+                handleSystemMenuItems()
+                showHideDrawer()
+                pushFragments(CountryListFragment())
             }
 
             R.id.relAirports -> {
@@ -564,7 +571,21 @@ class HomeActivity : BaseActivity(), HomeView, OnClickListener {
                 if (fragment1 != null && fragment1.isVisible) {
                     pushFragments(HomeFragment())
                 }
-            }  else {
+            } else if (f is SourceCategoryFragment) {
+                val fragment1 =
+                    supportFragmentManager.findFragmentById(R.id.content_frame) as SourceCategoryFragment?
+                if (fragment1 != null && fragment1.isVisible) {
+                    pushFragments(HomeFragment())
+                }
+            }else if (f is CountryListFragment) {
+                val fragment1 =
+                    supportFragmentManager.findFragmentById(R.id.content_frame) as CountryListFragment?
+                if (fragment1 != null && fragment1.isVisible) {
+                    pushFragments(HomeFragment())
+                }
+            }
+
+            else {
                 super.onBackPressed()
             }
         }
