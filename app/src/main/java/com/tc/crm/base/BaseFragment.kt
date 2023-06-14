@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import com.tc.crm.ui.home.HomeActivity
 
 
 abstract class BaseFragment : Fragment(), MvpView {
@@ -48,6 +49,17 @@ abstract class BaseFragment : Fragment(), MvpView {
     }
 
 
+    fun showHideBack(show: Boolean) {
+        if (activity is HomeActivity) {
+            (activity as? HomeActivity)?.showHideBackButton(show)
+        }
+    }
+    fun showTitle(showTitle: String) {
+        if (activity is HomeActivity) {
+            (activity as? HomeActivity)?.showTitle(showTitle)
+        }
+    }
+
     fun pushFragment(fragment: Fragment) {
 /*
         if (activity is HomeActivity) {
@@ -74,11 +86,8 @@ abstract class BaseFragment : Fragment(), MvpView {
 
     }
 
-    fun showHideBack(show: Boolean) {
-//        if (activity is HomeActivity) {
-//            (activity as? HomeActivity)?.showHideBackButton(show)
-//        }
-    }
+
+
 
 
     override fun onBackPressed() {

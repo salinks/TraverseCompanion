@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.tc.crm.R;
+import com.tc.crm.ui.home.HomeActivity;
 
 
 public abstract class BottomSheetBaseFragment extends BottomSheetDialogFragment implements MvpView {
@@ -130,7 +131,9 @@ public abstract class BottomSheetBaseFragment extends BottomSheetDialogFragment 
         }*/
     }
 
-
+    public void showMessage(int type, String Message) {
+        ((HomeActivity) getActivity()).showMessage(type, Message);
+    }
 
 
     public void ShowHideDrawer()

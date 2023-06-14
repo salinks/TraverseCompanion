@@ -57,4 +57,13 @@
         <item name="android:fontFamily">@font/montserrat_semi_bold</item>
     </style>
 
+
+    <style name="outline_button_style" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
+        <item name="android:textColor">@color/themeTextColor</item>
+    </style>
+
+
 </resources>

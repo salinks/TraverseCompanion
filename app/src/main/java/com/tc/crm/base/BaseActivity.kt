@@ -93,6 +93,7 @@ abstract class BaseActivity : AppCompatActivity(), MvpView {
 
 
 
+  @SuppressLint("SuspiciousIndentation")
   fun showMessage(type: Int?, Message: String?) {
 
             var color = R.color.green

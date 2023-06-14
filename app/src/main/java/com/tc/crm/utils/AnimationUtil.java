@@ -23,6 +23,8 @@ public class AnimationUtil {
 
     public static void circularRevealActivity(View mainView, View view) {
 
+
+
         int cx = view.getWidth() / 2;
         int cy = view.getHeight() / 2;
 

@@ -32,9 +32,7 @@ class LoginActivity : BaseActivity(),LoginView {
         val windowInsetsController = WindowCompat.getInsetsController(
             window, window.decorView
         )
-        if (TextUtils.isEmpty(PreferenceManager.getInstance().fcmToken)) {
-            saveFCMToken()
-        }
+
         windowInsetsController.isAppearanceLightStatusBars = true
          loginPresenter = LoginPresenter(this)
         binder?.btnLogin?.setOnClickListener {
@@ -97,19 +95,6 @@ class LoginActivity : BaseActivity(),LoginView {
 
     }
 
-    private fun saveFCMToken() {
-        FirebaseMessaging.getInstance().token.addOnCompleteListener { task: Task<String?> ->
-            if (task.isSuccessful) {
-                //pushToServer
-            }
-        }
-        FirebaseMessaging.getInstance().token.addOnSuccessListener { result ->
-            if(result != null){
-                PreferenceManager.getInstance().fcmToken =  result
-            }
 
-        }
-
-    }
 
 }
