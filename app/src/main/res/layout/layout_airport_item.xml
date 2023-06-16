@@ -32,63 +32,63 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="@dimen/_5sdp"
-                    android:paddingHorizontal="@dimen/_2sdp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/_2sdp">
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnEnable"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="@dimen/_30sdp"
-                        android:text="Enable"
                         style="@style/medium_text"
-                        android:backgroundTint="@color/green"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_30sdp"
                         android:layout_marginHorizontal="@dimen/_2sdp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/green"
+                        android:text="Enable"
                         android:textColor="@color/white"
-                        android:visibility="gone"
                         android:textSize="@dimen/_8sdp"
+                        android:visibility="gone"
                         app:cornerRadius="@dimen/_3sdp" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnDisable"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="@dimen/_30sdp"
-                        android:text="Disable"
                         style="@style/medium_text"
-                        android:visibility="gone"
-                        android:backgroundTint="@color/yellow_warning"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_30sdp"
                         android:layout_marginHorizontal="@dimen/_2sdp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/yellow_warning"
+                        android:text="Disable"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_8sdp"
+                        android:visibility="gone"
                         app:cornerRadius="@dimen/_3sdp" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnEdit"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="@dimen/_30sdp"
-                        android:text="Edit"
                         style="@style/medium_text"
-                        android:backgroundTint="@color/colorPrimary"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_30sdp"
                         android:layout_marginHorizontal="@dimen/_2sdp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:text="Edit"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_8sdp"
                         app:cornerRadius="@dimen/_3sdp" />
+
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnDelete"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="@dimen/_30sdp"
-                        android:text="Delete"
                         style="@style/medium_text"
-                        android:backgroundTint="@color/delete_red"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_30sdp"
                         android:layout_marginHorizontal="@dimen/_2sdp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/delete_red"
+                        android:text="Delete"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_8sdp"
                         app:cornerRadius="@dimen/_3sdp" />
-
 
 
                 </LinearLayout>
@@ -114,11 +114,12 @@
                 android:padding="@dimen/_5sdp">
 
                 <TextView
-                    android:id="@+id/tvSourceCategory"
+                    android:id="@+id/tvAirportName"
                     style="@style/big_text_bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_10sdp" />
+
                 <TextView
                     android:id="@+id/tvStatus"
                     style="@style/medium_text"
@@ -141,10 +142,38 @@
 
                     <TextView
                         style="@style/medium_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Terminals"
+                        android:textSize="@dimen/_8sdp" />
+
+
+                    <TextView
+                        android:id="@+id/tvTerminals"
+                        style="@style/big_text_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:textSize="@dimen/_10sdp" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/_5sdp">
+
+                    <TextView
+                        style="@style/medium_text"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Has Values"
+                        android:text="Country"
                         android:textSize="@dimen/_8sdp" />
 
 
@@ -154,7 +183,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="end"
-                        android:text="Input Required"
+                        android:text="Airport Code"
                         android:textSize="@dimen/_8sdp" />
 
 
@@ -167,7 +196,7 @@
                     android:paddingHorizontal="@dimen/_5sdp">
 
                     <TextView
-                        android:id="@+id/tvHasValues"
+                        android:id="@+id/tvCountryName"
                         style="@style/big_text_bold"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -176,7 +205,7 @@
 
 
                     <TextView
-                        android:id="@+id/tvInputRequired"
+                        android:id="@+id/tvAirportCode"
                         style="@style/big_text_bold"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -185,14 +214,6 @@
                         android:textSize="@dimen/_10sdp" />
 
                 </LinearLayout>
-
-
-
-
-
-
-
-
 
 
             </LinearLayout>

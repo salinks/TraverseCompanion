@@ -3,6 +3,8 @@ package com.tc.crm.remote;
 import com.tc.crm.data.model.CommonRequest;
 import com.tc.crm.data.model.CommonResult;
 import com.tc.crm.data.model.EnableDisableRequest;
+import com.tc.crm.model.airports.AirportListResponse;
+import com.tc.crm.model.airports.AirportRequest;
 import com.tc.crm.model.countries.CountriesResponse;
 import com.tc.crm.model.countries.CountryRequest;
 import com.tc.crm.model.countryList.CountryListResponse;
@@ -33,6 +35,9 @@ public interface TCAPI {
 
     @POST("countryMaster")
     Call<CountriesResponse> getCountryMasters(@Body CommonRequest dataModal);
+
+    @POST("activeCountryMaster")
+    Call<CountriesResponse> activeCountryMaster(@Body CommonRequest dataModal);
 
 
     @POST("enableDisableCountryMaster")
@@ -79,6 +84,21 @@ public interface TCAPI {
 
     @POST("enableDisableCountryList")
     Call<CommonResult> enableDisableCountryList(@Body EnableDisableRequest dataModal);
+
+    @POST("airportList")
+    Call<AirportListResponse> getAirportList(@Body CommonRequest dataModal);
+    @POST("enableDisableAirportList")
+    Call<CommonResult> enableDisableAirport(@Body EnableDisableRequest dataModal);
+
+    @POST("deleteAirport")
+    Call<CommonResult> deleteAirport(@Body EnableDisableRequest dataModal);
+
+    @POST("createAirportList")
+    Call<CommonResult> createAirport(@Body AirportRequest dataModal);
+
+    @POST("updateAirportList")
+    Call<CommonResult> updateAirport(@Body AirportRequest dataModal);
+
 
 
 }
