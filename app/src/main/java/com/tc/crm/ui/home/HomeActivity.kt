@@ -18,6 +18,7 @@ import com.tc.crm.model.home.dashboard.DashboardRequest
 import com.tc.crm.model.home.dashboard.DashboardResponse
 import com.tc.crm.ui.contents.airports.AirportFragment
 import com.tc.crm.ui.contents.countryList.CountryListFragment
+import com.tc.crm.ui.contents.intakeSections.IntakeSectionsFragment
 import com.tc.crm.ui.contents.sourceCategory.SourceCategoryFragment
 import com.tc.crm.ui.contents.userGroups.UserGroupsFragment
 import com.tc.crm.ui.masters.countries.CountriesFragment
@@ -476,6 +477,9 @@ class HomeActivity : BaseActivity(), HomeView, OnClickListener {
             }
 
             R.id.relDataSection -> {
+                handleSystemMenuItems()
+                showHideDrawer()
+                pushFragments(IntakeSectionsFragment())
 
             }
 
@@ -589,6 +593,12 @@ class HomeActivity : BaseActivity(), HomeView, OnClickListener {
             }else if (f is AirportFragment) {
                 val fragment1 =
                     supportFragmentManager.findFragmentById(R.id.content_frame) as AirportFragment?
+                if (fragment1 != null && fragment1.isVisible) {
+                    pushFragments(HomeFragment())
+                }
+            }else if (f is IntakeSectionsFragment) {
+                val fragment1 =
+                    supportFragmentManager.findFragmentById(R.id.content_frame) as IntakeSectionsFragment?
                 if (fragment1 != null && fragment1.isVisible) {
                     pushFragments(HomeFragment())
                 }

@@ -12,6 +12,8 @@ import com.tc.crm.model.fcm.FCMResponse;
 import com.tc.crm.model.fcm.RegisterFCMRequest;
 import com.tc.crm.model.home.dashboard.DashboardRequest;
 import com.tc.crm.model.home.dashboard.DashboardResponse;
+import com.tc.crm.model.intakeSections.IntakeSectionRequest;
+import com.tc.crm.model.intakeSections.IntakeSectionResponse;
 import com.tc.crm.model.login.LoginRequest;
 import com.tc.crm.model.login.LoginResponse;
 import com.tc.crm.model.sourceCategory.SourceCategoryRequest;
@@ -99,6 +101,17 @@ public interface TCAPI {
     @POST("updateAirportList")
     Call<CommonResult> updateAirport(@Body AirportRequest dataModal);
 
+    @POST("IntakeSections")
+    Call<IntakeSectionResponse> getIntakeSections(@Body CommonRequest dataModal);
 
+    @POST("enableDisableIntakeSections")
+    Call<CommonResult> enableDisableIntakeSection(@Body EnableDisableRequest dataModal);
+
+
+    @POST("createIntakeSection")
+    Call<CommonResult> createIntakeSection(@Body IntakeSectionRequest dataModal);
+
+    @POST("updateIntakeSection")
+    Call<CommonResult> updateIntakeSection(@Body IntakeSectionRequest dataModal);
 
 }
