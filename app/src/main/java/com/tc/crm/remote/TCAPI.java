@@ -3,8 +3,12 @@ package com.tc.crm.remote;
 import com.tc.crm.data.model.CommonRequest;
 import com.tc.crm.data.model.CommonResult;
 import com.tc.crm.data.model.EnableDisableRequest;
+import com.tc.crm.model.additionalCost.AdditionalCostRequest;
+import com.tc.crm.model.additionalCost.AdditionalCostResponse;
 import com.tc.crm.model.airports.AirportListResponse;
 import com.tc.crm.model.airports.AirportRequest;
+import com.tc.crm.model.amenities.AmenitiesRequest;
+import com.tc.crm.model.amenities.AmenitiesResponse;
 import com.tc.crm.model.countries.CountriesResponse;
 import com.tc.crm.model.countries.CountryRequest;
 import com.tc.crm.model.countryList.CountryListResponse;
@@ -113,5 +117,36 @@ public interface TCAPI {
 
     @POST("updateIntakeSection")
     Call<CommonResult> updateIntakeSection(@Body IntakeSectionRequest dataModal);
+
+    @POST("Amenities")
+    Call<AmenitiesResponse> getAmenities(@Body CommonRequest dataModal);
+
+    @POST("enableDisableAmenity")
+    Call<CommonResult> enableDisableAmenity(@Body EnableDisableRequest dataModal);
+    @POST("deleteAmenity")
+    Call<CommonResult> deleteAmenity(@Body EnableDisableRequest dataModal);
+
+    @POST("createAmenity")
+    Call<CommonResult> createAmenity(@Body AmenitiesRequest dataModal);
+
+    @POST("updateAmenity")
+    Call<CommonResult> updateAmenity(@Body AmenitiesRequest dataModal);
+
+    @POST("AdditionalCost")
+    Call<AdditionalCostResponse> getAdditionalCosts(@Body CommonRequest dataModal);
+
+    @POST("enableDisableAdditionalCost")
+    Call<CommonResult> enableDisableAdditionalCost(@Body EnableDisableRequest dataModal);
+    @POST("deleteAdditionalCost")
+    Call<CommonResult> deleteAdditionalCost(@Body EnableDisableRequest dataModal);
+
+    @POST("createAdditionalCost")
+    Call<CommonResult> createAdditionalCost(@Body AdditionalCostRequest dataModal);
+
+    @POST("updateAdditionalCost")
+    Call<CommonResult> updateAdditionalCost(@Body AdditionalCostRequest dataModal);
+
+
+
 
 }

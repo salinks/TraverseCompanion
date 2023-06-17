@@ -16,7 +16,9 @@ import com.tc.crm.databinding.ActivityHomeBinding
 import com.tc.crm.model.fcm.RegisterFCMRequest
 import com.tc.crm.model.home.dashboard.DashboardRequest
 import com.tc.crm.model.home.dashboard.DashboardResponse
+import com.tc.crm.ui.contents.additionalCost.AdditionalCostFragment
 import com.tc.crm.ui.contents.airports.AirportFragment
+import com.tc.crm.ui.contents.amenities.AmenitiesFragment
 import com.tc.crm.ui.contents.countryList.CountryListFragment
 import com.tc.crm.ui.contents.intakeSections.IntakeSectionsFragment
 import com.tc.crm.ui.contents.sourceCategory.SourceCategoryFragment
@@ -484,12 +486,19 @@ class HomeActivity : BaseActivity(), HomeView, OnClickListener {
             }
 
             R.id.relAmenities -> {
+                handleSystemMenuItems()
+                showHideDrawer()
+                pushFragments(AmenitiesFragment())
 
             }
 
             R.id.relAdditionalCost -> {
+                handleSystemMenuItems()
+                showHideDrawer()
+                pushFragments(AdditionalCostFragment())
 
             }
+
 
             R.id.relEmailConfiguration -> {
 
@@ -555,6 +564,7 @@ class HomeActivity : BaseActivity(), HomeView, OnClickListener {
         showMessage(DefValues.WARNING, "Press again to exit")
         Handler().postDelayed({ backPressedToExitOnce = false }, 2000)
     }
+
     override fun onBackPressed() {
         if (binder.drawerLayout.isDrawerOpen(GravityCompat.END)) {
             binder.drawerLayout.closeDrawer(GravityCompat.END)
@@ -584,27 +594,37 @@ class HomeActivity : BaseActivity(), HomeView, OnClickListener {
                 if (fragment1 != null && fragment1.isVisible) {
                     pushFragments(HomeFragment())
                 }
-            }else if (f is CountryListFragment) {
+            } else if (f is CountryListFragment) {
                 val fragment1 =
                     supportFragmentManager.findFragmentById(R.id.content_frame) as CountryListFragment?
                 if (fragment1 != null && fragment1.isVisible) {
                     pushFragments(HomeFragment())
                 }
-            }else if (f is AirportFragment) {
+            } else if (f is AirportFragment) {
                 val fragment1 =
                     supportFragmentManager.findFragmentById(R.id.content_frame) as AirportFragment?
                 if (fragment1 != null && fragment1.isVisible) {
                     pushFragments(HomeFragment())
                 }
-            }else if (f is IntakeSectionsFragment) {
+            } else if (f is IntakeSectionsFragment) {
                 val fragment1 =
                     supportFragmentManager.findFragmentById(R.id.content_frame) as IntakeSectionsFragment?
                 if (fragment1 != null && fragment1.isVisible) {
                     pushFragments(HomeFragment())
                 }
-            }
-
-            else {
+            } else if (f is AmenitiesFragment) {
+                val fragment1 =
+                    supportFragmentManager.findFragmentById(R.id.content_frame) as AmenitiesFragment?
+                if (fragment1 != null && fragment1.isVisible) {
+                    pushFragments(HomeFragment())
+                }
+            } else if (f is AdditionalCostFragment) {
+                val fragment1 =
+                    supportFragmentManager.findFragmentById(R.id.content_frame) as AdditionalCostFragment?
+                if (fragment1 != null && fragment1.isVisible) {
+                    pushFragments(HomeFragment())
+                }
+            } else {
                 super.onBackPressed()
             }
         }

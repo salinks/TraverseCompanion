@@ -2,6 +2,7 @@ package com.tc.crm.ui.contents.intakeSections;
 
 
 import com.tc.crm.data.model.CommonResult;
+import com.tc.crm.model.amenities.AmenitiesResponse;
 import com.tc.crm.model.intakeSections.IntakeSectionResponse;
 
 public interface IntakeSectionsView {
@@ -12,4 +13,5 @@ public interface IntakeSectionsView {
     void onCommonResult(CommonResult body);
 
     void onIntakeSectionResponse(IntakeSectionResponse body);
+
 }
