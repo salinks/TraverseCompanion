@@ -3,6 +3,7 @@ package com.tc.crm.remote;
 import com.tc.crm.data.model.CommonRequest;
 import com.tc.crm.data.model.CommonResult;
 import com.tc.crm.data.model.EnableDisableRequest;
+import com.tc.crm.model.activityLogs.ActivityLogsResponse;
 import com.tc.crm.model.additionalCost.AdditionalCostRequest;
 import com.tc.crm.model.additionalCost.AdditionalCostResponse;
 import com.tc.crm.model.airports.AirportListResponse;
@@ -153,5 +154,12 @@ public interface TCAPI {
 
     @POST("updateEmailConfiguration")
     Call<CommonResult> updateEmailConfiguration(@Body EmailConfigurationRequest dataModal);
+
+    @POST("activityLogs")
+    Call<ActivityLogsResponse> getActivityLogs(@Body CommonRequest dataModal);
+
+    @POST("clearActivityLogs")
+    Call<CommonResult> clearActivityLogs(@Body CommonRequest dataModal);
+
 
 }

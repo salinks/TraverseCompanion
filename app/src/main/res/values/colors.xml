@@ -15,7 +15,7 @@
      <color name="grey">#A9A9A9</color>
     <color name="green">#20700E</color>
     <color name="red">#F44242</color>
-    <color name="delete_red">#912C2C</color>
+    <color name="delete_red">#dc3545</color>
     <color name="yellow_warning">#FFC107</color>
     <color name="pending">#E0A545</color>
 </resources>
