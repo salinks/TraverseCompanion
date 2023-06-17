@@ -20,6 +20,7 @@ import com.tc.crm.ui.contents.additionalCost.AdditionalCostFragment
 import com.tc.crm.ui.contents.airports.AirportFragment
 import com.tc.crm.ui.contents.amenities.AmenitiesFragment
 import com.tc.crm.ui.contents.countryList.CountryListFragment
+import com.tc.crm.ui.contents.emailConfig.EmailConfigurationFragment
 import com.tc.crm.ui.contents.intakeSections.IntakeSectionsFragment
 import com.tc.crm.ui.contents.sourceCategory.SourceCategoryFragment
 import com.tc.crm.ui.contents.userGroups.UserGroupsFragment
@@ -499,10 +500,13 @@ class HomeActivity : BaseActivity(), HomeView, OnClickListener {
 
             }
 
-
             R.id.relEmailConfiguration -> {
+                handleSystemMenuItems()
+                showHideDrawer()
+                pushFragments(EmailConfigurationFragment())
 
             }
+
 
             R.id.relActivityLog -> {
 
@@ -621,6 +625,12 @@ class HomeActivity : BaseActivity(), HomeView, OnClickListener {
             } else if (f is AdditionalCostFragment) {
                 val fragment1 =
                     supportFragmentManager.findFragmentById(R.id.content_frame) as AdditionalCostFragment?
+                if (fragment1 != null && fragment1.isVisible) {
+                    pushFragments(HomeFragment())
+                }
+            } else if (f is EmailConfigurationFragment) {
+                val fragment1 =
+                    supportFragmentManager.findFragmentById(R.id.content_frame) as EmailConfigurationFragment?
                 if (fragment1 != null && fragment1.isVisible) {
                     pushFragments(HomeFragment())
                 }

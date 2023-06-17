@@ -12,6 +12,8 @@ import com.tc.crm.model.amenities.AmenitiesResponse;
 import com.tc.crm.model.countries.CountriesResponse;
 import com.tc.crm.model.countries.CountryRequest;
 import com.tc.crm.model.countryList.CountryListResponse;
+import com.tc.crm.model.emailConfig.EmailConfigurationRequest;
+import com.tc.crm.model.emailConfig.EmailConfigurationResponse;
 import com.tc.crm.model.fcm.FCMResponse;
 import com.tc.crm.model.fcm.RegisterFCMRequest;
 import com.tc.crm.model.home.dashboard.DashboardRequest;
@@ -146,7 +148,10 @@ public interface TCAPI {
     @POST("updateAdditionalCost")
     Call<CommonResult> updateAdditionalCost(@Body AdditionalCostRequest dataModal);
 
+    @POST("EmailConfiguration")
+    Call<EmailConfigurationResponse> getEmailConfiguration(@Body CommonRequest dataModal);
 
-
+    @POST("updateEmailConfiguration")
+    Call<CommonResult> updateEmailConfiguration(@Body EmailConfigurationRequest dataModal);
 
 }
