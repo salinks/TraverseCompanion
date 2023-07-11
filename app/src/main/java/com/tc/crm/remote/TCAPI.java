@@ -10,6 +10,9 @@ import com.tc.crm.model.airports.AirportListResponse;
 import com.tc.crm.model.airports.AirportRequest;
 import com.tc.crm.model.amenities.AmenitiesRequest;
 import com.tc.crm.model.amenities.AmenitiesResponse;
+import com.tc.crm.model.clientDetails.ClientDetailsRequest;
+import com.tc.crm.model.clientDetails.ClientDetailsResponse;
+import com.tc.crm.model.clientList.ClientListResponse;
 import com.tc.crm.model.countries.CountriesResponse;
 import com.tc.crm.model.countries.CountryRequest;
 import com.tc.crm.model.countryList.CountryListResponse;
@@ -160,6 +163,12 @@ public interface TCAPI {
 
     @POST("clearActivityLogs")
     Call<CommonResult> clearActivityLogs(@Body CommonRequest dataModal);
+
+    @POST("clientsList")
+    Call<ClientListResponse> getClientLists(@Body CommonRequest dataModal);
+
+    @POST("clientDetails")
+    Call<ClientDetailsResponse> getClientDetails(@Body ClientDetailsRequest dataModal);
 
 
 }

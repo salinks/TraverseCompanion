@@ -17,6 +17,10 @@ import android.view.animation.TranslateAnimation;
 import android.widget.TextView;
 
 import com.tc.crm.R;
+import com.tc.crm.model.clientList.UniversityFiltersItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class AnimationUtil {
@@ -192,5 +196,8 @@ public class AnimationUtil {
 
         rotation.setDuration(300);
         myView.startAnimation(rotation);
+
+
+
     }
 }

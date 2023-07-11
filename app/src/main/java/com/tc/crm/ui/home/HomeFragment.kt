@@ -62,6 +62,7 @@ class HomeFragment : BaseFragment() ,View.OnClickListener {
 
     override fun onResume() {
         super.onResume()
+        showTitle("Dashboard")
         (activity as? HomeActivity)?.callDashboardAPI()
     }
 

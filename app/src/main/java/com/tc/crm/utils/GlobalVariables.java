@@ -9,4 +9,5 @@ public class GlobalVariables {
     public static DashboardResponse dashboardResponse;
     public static AppMenu APP_MENU;
     public static SystemMenu SYSTEM_MENU;
+    public static String ClientID;
 }
