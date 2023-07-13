@@ -64,4 +64,20 @@
     <string name="passenger_type">Passenger Type</string>
     <string name="edit_info">Edit Info</string>
     <string name="log_history">Log History</string>
+    <string name="system_data_info">System Data Info</string>
+    <string name="lead_head">Lead Head</string>
+    <string name="database_name">Database Name</string>
+    <string name="client_stage">Client Stage</string>
+    <string name="edit">Edit</string>
+    <string name="followup_date">Followup Date</string>
+    <string name="select_country">Select Country</string>
+    <string name="update_country">Update Country</string>
+    <string name="cancel">Cancel</string>
+    <string name="update">update</string>
+    <string name="select_section">Select Section</string>
+    <string name="intake_sections">Intake Sections</string>
+    <string name="select_client_type">Select Client Type</string>
+    <string name="given_name">Given Name</string>
+    <string name="surname">Surname</string>
+    <string name="date_of_birth">Date Of Birth</string>
 </resources>

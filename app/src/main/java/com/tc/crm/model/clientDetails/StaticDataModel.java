@@ -2,7 +2,7 @@ package com.tc.crm.model.clientDetails;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ClientTypesItem{
+public class StaticDataModel {
 
 	@SerializedName("id")
 	public String id;

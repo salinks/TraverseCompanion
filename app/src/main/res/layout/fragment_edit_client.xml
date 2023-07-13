@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f0f0f0">
+
+
+      <androidx.core.widget.NestedScrollView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:overScrollMode="never">
+          <RelativeLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              >
+
+
+
+
+              <LinearLayout
+                  android:id="@+id/lnrCountryUpdate"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical"
+                  android:paddingHorizontal="@dimen/_10sdp"
+                  android:visibility="gone">
+
+                  <TextView
+                      style="@style/medium_text"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginStart="@dimen/_2sdp"
+                      android:layout_marginTop="@dimen/_15sdp"
+                      android:text="@string/select_country"
+                      android:textSize="@dimen/_8sdp" />
+
+                  <com.google.android.material.card.MaterialCardView
+                      android:layout_width="match_parent"
+                      android:layout_height="@dimen/_35sdp"
+                      android:layout_margin="@dimen/_2sdp"
+                      android:elevation="@dimen/_1sdp"
+                      app:cardBackgroundColor="@color/white"
+                      app:cardCornerRadius="@dimen/_4sdp"
+                      app:cardElevation="@dimen/_3sdp">
+
+                      <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:orientation="vertical">
+
+                          <com.tc.crm.juzdevz.spinner.JDSpinner
+                              android:id="@+id/sCountry"
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:spinnerMode="dropdown"
+                              tools:listitem="@layout/layout_spinner" />
+
+                      </LinearLayout>
+
+                  </com.google.android.material.card.MaterialCardView>
+
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal">
+
+
+                      <com.google.android.material.button.MaterialButton
+                          android:id="@+id/btnUpdateCountryCancel"
+                          style="@style/outlineButton"
+                          android:layout_width="0dp"
+                          android:layout_height="@dimen/_40sdp"
+                          android:layout_marginVertical="@dimen/_15sdp"
+                          android:layout_weight="1"
+                          android:backgroundTint="@android:color/transparent"
+                          android:text="@string/cancel"
+                          android:textColor="@color/colorPrimary"
+                          android:textSize="@dimen/_11sdp"
+                          app:cornerRadius="@dimen/_5sdp"
+                          app:strokeColor="@color/colorPrimary"
+                          app:strokeWidth="@dimen/_1sdp" />
+
+                      <View
+                          android:layout_width="@dimen/_5sdp"
+                          android:layout_height="@dimen/_10sdp" />
+
+                      <com.google.android.material.button.MaterialButton
+                          android:id="@+id/btnUpdateCountry"
+                          style="@style/medium_text"
+                          android:layout_width="0dp"
+                          android:layout_height="@dimen/_40sdp"
+                          android:layout_marginVertical="@dimen/_15sdp"
+                          android:layout_weight="1"
+                          android:backgroundTint="@color/colorPrimary"
+                          android:text="@string/update"
+                          android:textColor="@color/white"
+                          android:textSize="@dimen/_11sdp"
+                          app:cornerRadius="@dimen/_5sdp" />
+
+                  </LinearLayout>
+
+              </LinearLayout>
+
+              <LinearLayout
+                  android:id="@+id/lnrIntakeSectionUpdate"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical"
+                  android:paddingHorizontal="@dimen/_10sdp"
+                  android:visibility="gone">
+
+                  <TextView
+                      style="@style/medium_text"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginStart="@dimen/_2sdp"
+                      android:layout_marginTop="@dimen/_15sdp"
+                      android:text="@string/select_section"
+                      android:textSize="@dimen/_8sdp" />
+
+                  <com.google.android.material.card.MaterialCardView
+                      android:id="@+id/cvSelectSection"
+                      android:layout_width="match_parent"
+                      android:layout_height="@dimen/_35sdp"
+                      android:layout_margin="@dimen/_2sdp"
+                      android:elevation="@dimen/_1sdp"
+                      app:cardBackgroundColor="@color/white"
+                      app:cardCornerRadius="@dimen/_4sdp"
+                      app:cardElevation="@dimen/_3sdp">
+
+                      <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:orientation="vertical"
+                          android:padding="@dimen/_5sdp">
+
+                          <TextView
+                              android:id="@+id/tvSectionName"
+                              style="@style/big_text_bold"
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:gravity="start|center"
+                              android:text="Select"
+                              android:textSize="@dimen/_11sdp" />
+
+
+                      </LinearLayout>
+
+                  </com.google.android.material.card.MaterialCardView>
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal">
+
+
+                      <com.google.android.material.button.MaterialButton
+                          android:id="@+id/btnUpdateSectionCancel"
+                          style="@style/outlineButton"
+                          android:layout_width="0dp"
+                          android:layout_height="@dimen/_35sdp"
+                          android:layout_marginVertical="@dimen/_15sdp"
+                          android:layout_weight="1"
+                          android:backgroundTint="@android:color/transparent"
+                          android:text="@string/cancel"
+                          android:textColor="@color/colorPrimary"
+                          android:textSize="@dimen/_11sdp"
+                          app:cornerRadius="@dimen/_5sdp"
+                          app:strokeColor="@color/colorPrimary"
+                          app:strokeWidth="@dimen/_1sdp" />
+
+                      <View
+                          android:layout_width="@dimen/_5sdp"
+                          android:layout_height="@dimen/_10sdp" />
+
+                      <com.google.android.material.button.MaterialButton
+                          android:id="@+id/btnUpdateSection"
+                          style="@style/medium_text"
+                          android:layout_width="0dp"
+                          android:layout_height="@dimen/_35sdp"
+                          android:layout_marginVertical="@dimen/_15sdp"
+                          android:layout_weight="1"
+                          android:backgroundTint="@color/colorPrimary"
+                          android:text="@string/update"
+                          android:textColor="@color/white"
+                          android:textSize="@dimen/_11sdp"
+                          app:cornerRadius="@dimen/_5sdp" />
+
+                  </LinearLayout>
+              </LinearLayout>
+
+              <LinearLayout
+                  android:id="@+id/lnrClientTypeUpdate"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical"
+                  android:paddingHorizontal="@dimen/_10sdp"
+                  android:visibility="gone">
+
+                  <TextView
+                      style="@style/medium_text"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginStart="@dimen/_2sdp"
+                      android:layout_marginTop="@dimen/_15sdp"
+                      android:text="@string/select_client_type"
+                      android:textSize="@dimen/_8sdp" />
+
+                  <com.google.android.material.card.MaterialCardView
+                      android:layout_width="match_parent"
+                      android:layout_height="@dimen/_35sdp"
+                      android:layout_margin="@dimen/_2sdp"
+                      android:elevation="@dimen/_1sdp"
+                      app:cardBackgroundColor="@color/white"
+                      app:cardCornerRadius="@dimen/_4sdp"
+                      app:cardElevation="@dimen/_3sdp">
+
+                      <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:orientation="vertical">
+
+                          <com.tc.crm.juzdevz.spinner.JDSpinner
+                              android:id="@+id/spnClientType"
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:spinnerMode="dropdown"
+                              tools:listitem="@layout/layout_spinner" />
+
+                      </LinearLayout>
+
+                  </com.google.android.material.card.MaterialCardView>
+
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal">
+
+
+                      <com.google.android.material.button.MaterialButton
+                          android:id="@+id/btnUpdateClientTypeCancel"
+                          style="@style/outlineButton"
+                          android:layout_width="0dp"
+                          android:layout_height="@dimen/_40sdp"
+                          android:layout_marginVertical="@dimen/_15sdp"
+                          android:layout_weight="1"
+                          android:backgroundTint="@android:color/transparent"
+                          android:text="@string/cancel"
+                          android:textColor="@color/colorPrimary"
+                          android:textSize="@dimen/_11sdp"
+                          app:cornerRadius="@dimen/_5sdp"
+                          app:strokeColor="@color/colorPrimary"
+                          app:strokeWidth="@dimen/_1sdp" />
+
+                      <View
+                          android:layout_width="@dimen/_5sdp"
+                          android:layout_height="@dimen/_10sdp" />
+
+                      <com.google.android.material.button.MaterialButton
+                          android:id="@+id/btnUpdateClientType"
+                          style="@style/medium_text"
+                          android:layout_width="0dp"
+                          android:layout_height="@dimen/_40sdp"
+                          android:layout_marginVertical="@dimen/_15sdp"
+                          android:layout_weight="1"
+                          android:backgroundTint="@color/colorPrimary"
+                          android:text="@string/update"
+                          android:textColor="@color/white"
+                          android:textSize="@dimen/_11sdp"
+                          app:cornerRadius="@dimen/_5sdp" />
+
+                  </LinearLayout>
+
+              </LinearLayout>
+
+              <LinearLayout
+                  android:id="@+id/lnrStaffUpdate"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical"
+                  android:paddingHorizontal="@dimen/_10sdp"
+                  android:visibility="gone">
+
+                  <TextView
+                      style="@style/medium_text"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginStart="@dimen/_2sdp"
+                      android:layout_marginTop="@dimen/_15sdp"
+                      android:text="@string/select_client_type"
+                      android:textSize="@dimen/_8sdp" />
+
+                  <com.google.android.material.card.MaterialCardView
+                      android:layout_width="match_parent"
+                      android:layout_height="@dimen/_35sdp"
+                      android:layout_margin="@dimen/_2sdp"
+                      android:elevation="@dimen/_1sdp"
+                      app:cardBackgroundColor="@color/white"
+                      app:cardCornerRadius="@dimen/_4sdp"
+                      app:cardElevation="@dimen/_3sdp">
+
+                      <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:orientation="vertical">
+
+                          <com.tc.crm.juzdevz.spinner.JDSpinner
+                              android:id="@+id/spnStaffType"
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:spinnerMode="dropdown"
+                              tools:listitem="@layout/layout_spinner" />
+
+                      </LinearLayout>
+
+                  </com.google.android.material.card.MaterialCardView>
+
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal">
+
+
+                      <com.google.android.material.button.MaterialButton
+                          android:id="@+id/btnUpdateStaffCancel"
+                          style="@style/outlineButton"
+                          android:layout_width="0dp"
+                          android:layout_height="@dimen/_40sdp"
+                          android:layout_marginVertical="@dimen/_15sdp"
+                          android:layout_weight="1"
+                          android:backgroundTint="@android:color/transparent"
+                          android:text="@string/cancel"
+                          android:textColor="@color/colorPrimary"
+                          android:textSize="@dimen/_11sdp"
+                          app:cornerRadius="@dimen/_5sdp"
+                          app:strokeColor="@color/colorPrimary"
+                          app:strokeWidth="@dimen/_1sdp" />
+
+                      <View
+                          android:layout_width="@dimen/_5sdp"
+                          android:layout_height="@dimen/_10sdp" />
+
+                      <com.google.android.material.button.MaterialButton
+                          android:id="@+id/btnUpdateStaff"
+                          style="@style/medium_text"
+                          android:layout_width="0dp"
+                          android:layout_height="@dimen/_40sdp"
+                          android:layout_marginVertical="@dimen/_15sdp"
+                          android:layout_weight="1"
+                          android:backgroundTint="@color/colorPrimary"
+                          android:text="@string/update"
+                          android:textColor="@color/white"
+                          android:textSize="@dimen/_11sdp"
+                          app:cornerRadius="@dimen/_5sdp" />
+
+                  </LinearLayout>
+
+              </LinearLayout>
+
+              <LinearLayout
+                  android:id="@+id/lnrBasicInfoUpdate"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical"
+                  android:paddingHorizontal="@dimen/_10sdp"
+                  android:visibility="visible">
+
+                  <TextView
+                      style="@style/medium_text"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginStart="@dimen/_2sdp"
+                      android:layout_marginTop="@dimen/_15sdp"
+                      android:text="@string/given_name"
+                      android:textSize="@dimen/_8sdp" />
+
+                  <com.google.android.material.card.MaterialCardView
+                      android:layout_width="match_parent"
+                      android:layout_height="@dimen/_35sdp"
+                      android:layout_margin="@dimen/_2sdp"
+                      android:elevation="@dimen/_1sdp"
+                      app:cardBackgroundColor="@color/white"
+                      app:cardCornerRadius="@dimen/_4sdp"
+                      app:cardElevation="@dimen/_3sdp">
+
+                      <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:orientation="vertical"
+                          android:padding="@dimen/_5sdp">
+
+                          <EditText
+                              android:id="@+id/etGivenName"
+                              style="@style/medium_text"
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:background="@null"
+                              android:hint="@string/given_name"
+                              android:imeOptions="actionNext"
+                              android:inputType="textCapSentences"
+                              android:maxLength="55"
+                              android:maxLines="1"
+                              android:paddingHorizontal="@dimen/_5sdp"
+                              android:textSize="@dimen/_10sdp" />
+
+
+                      </LinearLayout>
+
+                  </com.google.android.material.card.MaterialCardView>
+
+
+
+                  <TextView
+                      style="@style/medium_text"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginStart="@dimen/_2sdp"
+                      android:layout_marginTop="@dimen/_5sdp"
+                      android:text="@string/surname"
+                      android:textSize="@dimen/_8sdp" />
+
+                  <com.google.android.material.card.MaterialCardView
+                      android:layout_width="match_parent"
+                      android:layout_height="@dimen/_35sdp"
+                      android:layout_margin="@dimen/_2sdp"
+                      android:elevation="@dimen/_1sdp"
+                      app:cardBackgroundColor="@color/white"
+                      app:cardCornerRadius="@dimen/_4sdp"
+                      app:cardElevation="@dimen/_3sdp">
+
+                      <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:orientation="vertical"
+                          android:padding="@dimen/_5sdp">
+
+                          <EditText
+                              android:id="@+id/etSurname"
+                              style="@style/medium_text"
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:background="@null"
+                              android:hint="@string/surname"
+                              android:imeOptions="actionDone"
+                              android:inputType="textCapSentences"
+                              android:maxLength="55"
+                              android:maxLines="1"
+                              android:paddingHorizontal="@dimen/_5sdp"
+                              android:textSize="@dimen/_10sdp" />
+
+
+                      </LinearLayout>
+
+                  </com.google.android.material.card.MaterialCardView>
+
+
+                  <TextView
+                      style="@style/medium_text"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginStart="@dimen/_2sdp"
+                      android:layout_marginTop="@dimen/_5sdp"
+                      android:text="@string/gender"
+                      android:textSize="@dimen/_8sdp" />
+
+                  <com.google.android.material.card.MaterialCardView
+                      android:layout_width="match_parent"
+                      android:layout_height="@dimen/_35sdp"
+                      android:layout_margin="@dimen/_2sdp"
+                      android:elevation="@dimen/_1sdp"
+                      app:cardBackgroundColor="@color/white"
+                      app:cardCornerRadius="@dimen/_4sdp"
+                      app:cardElevation="@dimen/_3sdp">
+
+                      <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:orientation="vertical">
+
+                          <com.tc.crm.juzdevz.spinner.JDSpinner
+                              android:id="@+id/spnGender"
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:spinnerMode="dropdown"
+                              tools:listitem="@layout/layout_spinner" />
+
+                      </LinearLayout>
+
+                  </com.google.android.material.card.MaterialCardView>
+
+                  <TextView
+                      style="@style/medium_text"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginStart="@dimen/_2sdp"
+                      android:layout_marginTop="@dimen/_5sdp"
+                      android:text="@string/date_of_birth"
+                      android:textSize="@dimen/_8sdp" />
+
+                  <com.google.android.material.card.MaterialCardView
+                      android:layout_width="match_parent"
+                      android:layout_height="@dimen/_35sdp"
+                      android:layout_margin="@dimen/_2sdp"
+                      android:elevation="@dimen/_1sdp"
+                      app:cardBackgroundColor="@color/white"
+                      app:cardCornerRadius="@dimen/_4sdp"
+                      app:cardElevation="@dimen/_3sdp">
+
+                      <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:paddingHorizontal="@dimen/_5sdp"
+                          android:orientation="vertical">
+
+                          <TextView
+                              android:id="@+id/tvDOB"
+                              style="@style/medium_text"
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:gravity="start|center"
+                              android:paddingHorizontal="@dimen/_5sdp"
+                              android:text="Select"
+                              android:textSize="@dimen/_11sdp" />
+
+                      </LinearLayout>
+
+                  </com.google.android.material.card.MaterialCardView>
+
+                  <TextView
+                      style="@style/medium_text"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginStart="@dimen/_2sdp"
+                      android:layout_marginTop="@dimen/_5sdp"
+                      android:text="@string/passenger_type"
+                      android:textSize="@dimen/_8sdp" />
+
+                  <com.google.android.material.card.MaterialCardView
+                      android:layout_width="match_parent"
+                      android:layout_height="@dimen/_35sdp"
+                      android:layout_margin="@dimen/_2sdp"
+                      android:elevation="@dimen/_1sdp"
+                      app:cardBackgroundColor="@color/white"
+                      app:cardCornerRadius="@dimen/_4sdp"
+                      app:cardElevation="@dimen/_3sdp">
+
+                      <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:orientation="vertical">
+
+                          <com.tc.crm.juzdevz.spinner.JDSpinner
+                              android:id="@+id/spnPassengerType"
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:spinnerMode="dropdown"
+                              tools:listitem="@layout/layout_spinner" />
+
+                      </LinearLayout>
+
+                  </com.google.android.material.card.MaterialCardView>
+
+                  <TextView
+                      style="@style/medium_text"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginStart="@dimen/_2sdp"
+                      android:layout_marginTop="@dimen/_5sdp"
+                      android:text="Destination Country"
+                      android:textSize="@dimen/_8sdp" />
+
+                  <com.google.android.material.card.MaterialCardView
+                      android:layout_width="match_parent"
+                      android:layout_height="@dimen/_35sdp"
+                      android:layout_margin="@dimen/_2sdp"
+                      android:elevation="@dimen/_1sdp"
+                      app:cardBackgroundColor="@color/white"
+                      app:cardCornerRadius="@dimen/_4sdp"
+                      app:cardElevation="@dimen/_3sdp">
+
+                      <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:orientation="vertical">
+
+                          <com.tc.crm.juzdevz.spinner.JDSpinner
+                              android:id="@+id/spnDestCountry"
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:spinnerMode="dropdown"
+                              tools:listitem="@layout/layout_spinner" />
+
+                      </LinearLayout>
+
+                  </com.google.android.material.card.MaterialCardView>
+
+
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal">
+
+
+                      <com.google.android.material.button.MaterialButton
+                          android:id="@+id/btnUpdateBasicInfoCancel"
+                          style="@style/outlineButton"
+                          android:layout_width="0dp"
+                          android:layout_height="@dimen/_40sdp"
+                          android:layout_marginVertical="@dimen/_15sdp"
+                          android:layout_weight="1"
+                          android:backgroundTint="@android:color/transparent"
+                          android:text="@string/cancel"
+                          android:textColor="@color/colorPrimary"
+                          android:textSize="@dimen/_11sdp"
+                          app:cornerRadius="@dimen/_5sdp"
+                          app:strokeColor="@color/colorPrimary"
+                          app:strokeWidth="@dimen/_1sdp" />
+
+                      <View
+                          android:layout_width="@dimen/_5sdp"
+                          android:layout_height="@dimen/_10sdp" />
+
+                      <com.google.android.material.button.MaterialButton
+                          android:id="@+id/btnUpdateBasicInfo"
+                          style="@style/medium_text"
+                          android:layout_width="0dp"
+                          android:layout_height="@dimen/_40sdp"
+                          android:layout_marginVertical="@dimen/_15sdp"
+                          android:layout_weight="1"
+                          android:backgroundTint="@color/colorPrimary"
+                          android:text="@string/update"
+                          android:textColor="@color/white"
+                          android:textSize="@dimen/_11sdp"
+                          app:cornerRadius="@dimen/_5sdp" />
+
+                  </LinearLayout>
+
+              </LinearLayout>
+          </RelativeLayout>
+
+
+
+      </androidx.core.widget.NestedScrollView>
+
+    </RelativeLayout>
+</layout>

@@ -12,6 +12,10 @@ import com.tc.crm.model.amenities.AmenitiesRequest;
 import com.tc.crm.model.amenities.AmenitiesResponse;
 import com.tc.crm.model.clientDetails.ClientDetailsRequest;
 import com.tc.crm.model.clientDetails.ClientDetailsResponse;
+import com.tc.crm.model.clientDetails.req.CountryUploadRequest;
+import com.tc.crm.model.clientDetails.req.IntakeSectionUpdateRequest;
+import com.tc.crm.model.clientDetails.req.UpdateClientTypeRequest;
+import com.tc.crm.model.clientDetails.req.UpdateStaffRequest;
 import com.tc.crm.model.clientList.ClientListResponse;
 import com.tc.crm.model.countries.CountriesResponse;
 import com.tc.crm.model.countries.CountryRequest;
@@ -31,9 +35,13 @@ import com.tc.crm.model.sourceCategory.SourceCategoryResponse;
 import com.tc.crm.model.userGroups.UserGroupsRequest;
 import com.tc.crm.model.userGroups.UserGroupsResponse;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 public interface TCAPI {
     @POST("login")
@@ -170,5 +178,31 @@ public interface TCAPI {
     @POST("clientDetails")
     Call<ClientDetailsResponse> getClientDetails(@Body ClientDetailsRequest dataModal);
 
+    @POST("generateLink")
+    Call<CommonResult> generateLink(@Body ClientDetailsRequest dataModal);
+
+
+
+    @Multipart
+    @POST("updateDocument")
+    Call<CommonResult> UploadFile(@Part MultipartBody.Part file,
+                                  @Part("userId") RequestBody userId,
+                                  @Part("clientId") RequestBody clientId,
+                                  @Part("uploadFor") RequestBody uploadFor,
+                                  @Part("recId") RequestBody recId);
+
+
+
+    @POST("UpdateClientCountry")
+    Call<CommonResult> updateClientCountry(@Body CountryUploadRequest dataModal);
+
+    @POST("UpdateIntakeSectionInfo")
+    Call<CommonResult> updateClientIntakeSection(@Body IntakeSectionUpdateRequest dataModal);
+
+    @POST("UpdateClientType")
+    Call<CommonResult> updateClientType(@Body UpdateClientTypeRequest dataModal);
+
+    @POST("updateStaff")
+    Call<CommonResult> updateStaff(@Body UpdateStaffRequest dataModal);
 
 }

@@ -78,6 +78,9 @@ public class ClientInfo {
     @SerializedName("imagePath")
     public String imagePath;
 
+    @SerializedName("baseURL")
+    public String baseURL;
+
     @SerializedName("aPhoneNumber")
     public String aPhoneNumber;
 

@@ -61,10 +61,11 @@ abstract class BaseFragment : Fragment(), MvpView {
     }
 
     fun pushFragment(fragment: Fragment) {
-/*
         if (activity is HomeActivity) {
             (activity as HomeActivity).pushFragments(fragment)
-        }*/
+        }
+/*
+        */
 
         /* else if (activity is ManageBookingActivity) {
              (activity as ManageBookingActivity).pushFragments( fragment)
@@ -92,9 +93,9 @@ abstract class BaseFragment : Fragment(), MvpView {
 
     override fun onBackPressed() {
 
-//        if (activity is HomeActivity) {
-//            (activity as HomeActivity).onBackPressed()
-//        }
+        if (activity is HomeActivity) {
+            (activity as HomeActivity).onBackPressed()
+        }
 
 
     }

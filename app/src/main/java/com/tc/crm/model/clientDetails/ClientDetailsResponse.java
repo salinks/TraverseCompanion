@@ -9,11 +9,9 @@ public class ClientDetailsResponse {
 //	@SerializedName("costItems")
 //	public List<CostItemsItem> costItems;
 //
-//	@SerializedName("country")
-//	public List<CountryItem> country;
 //
-//	@SerializedName("clientTypes")
-//	public List<ClientTypesItem> clientTypes;
+//
+//
 //
 //	@SerializedName("sourceCategory")
 //	public List<SourceCategoryItem> sourceCategory;
@@ -22,16 +20,35 @@ public class ClientDetailsResponse {
 //	public List<ClientStatusItem> clientStatus;
 
 
+
+
     @SerializedName("Results")
     public Results results;
     @SerializedName("clientInfo")
     public ClientInfo clientInfo;
 
-//	@SerializedName("countryMaster")
-//	public List<CountryMasterItem> countryMaster;
-//
-//	@SerializedName("intakeSections")
-//	public List<IntakeSectionsItem> intakeSections;
+    @SerializedName("countryMaster")
+    public List<CountryMasterItem> countryMaster;
+
+    @SerializedName("intakeSections")
+	public List<IntakeSectionsItem> intakeSections;
+
+    @SerializedName("clientTypes")
+    public List<StaticDataModel> clientTypes;
+
+    @SerializedName("genderList")
+    public List<StaticDataModel> genderList;
+
+    @SerializedName("passengerTypes")
+    public List<StaticDataModel> passengerTypes;
+
+    @SerializedName("country")
+    public List<CountryItem> country;
+
+    @SerializedName("travelConsultants")
+    public List<TravelConsultantsItem> travelConsultants;
+
+
 //
 //	@SerializedName("airports")
 //	public List<AirportsItem> airports;
@@ -41,12 +58,7 @@ public class ClientDetailsResponse {
 //
 //	@SerializedName("universities")
 //	public List<UniversitiesItem> universities;
-//
 
-//
-//	@SerializedName("trvavelConsultants")
-//	public List<TrvavelConsultantsItem> travelConsultants;
-//
 //	@SerializedName("drivers")
 //	public List<DriversItem> drivers;
 }

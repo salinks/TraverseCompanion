@@ -1,10 +1,15 @@
 package com.tc.crm.ui.home
 
+import android.Manifest
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.provider.MediaStore
 import android.view.View
 import android.view.View.OnClickListener
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.view.GravityCompat
 import androidx.core.view.WindowCompat
@@ -16,7 +21,9 @@ import com.tc.crm.databinding.ActivityHomeBinding
 import com.tc.crm.model.fcm.RegisterFCMRequest
 import com.tc.crm.model.home.dashboard.DashboardRequest
 import com.tc.crm.model.home.dashboard.DashboardResponse
+import com.tc.crm.ui.applicationMenu.clientDetails.ClientDetailsFragment
 import com.tc.crm.ui.applicationMenu.clientList.ClientListFragment
+import com.tc.crm.ui.applicationMenu.editClient.EditClientFragment
 import com.tc.crm.ui.contents.activityLogs.ActivityLogsFragment
 import com.tc.crm.ui.contents.additionalCost.AdditionalCostFragment
 import com.tc.crm.ui.contents.airports.AirportFragment
@@ -31,6 +38,7 @@ import com.tc.crm.utils.AnimationUtil
 import com.tc.crm.utils.DefValues
 import com.tc.crm.utils.GlobalVariables
 import com.tc.crm.utils.PreferenceManager
+import org.greenrobot.eventbus.EventBus
 
 class HomeActivity : BaseActivity(), HomeView, OnClickListener {
 
@@ -653,7 +661,19 @@ class HomeActivity : BaseActivity(), HomeView, OnClickListener {
                 if (fragment1 != null && fragment1.isVisible) {
                     pushFragments(HomeFragment())
                 }
-            } else {
+            } else if (f is ClientDetailsFragment) {
+                val fragment1 =
+                    supportFragmentManager.findFragmentById(R.id.content_frame) as ClientDetailsFragment?
+                if (fragment1 != null && fragment1.isVisible) {
+                    pushFragments(ClientListFragment())
+                }
+            }else if (f is EditClientFragment) {
+                val fragment1 =
+                    supportFragmentManager.findFragmentById(R.id.content_frame) as EditClientFragment?
+                if (fragment1 != null && fragment1.isVisible) {
+                    pushFragments(ClientDetailsFragment())
+                }
+            }else {
                 super.onBackPressed()
             }
         }
@@ -662,6 +682,45 @@ class HomeActivity : BaseActivity(), HomeView, OnClickListener {
     fun logout() {
 
     }
+    var PERMISSIONS = arrayOf(
+        Manifest.permission.READ_EXTERNAL_STORAGE,
+        Manifest.permission.WRITE_EXTERNAL_STORAGE
+    )
+    fun pickProfileImage() {
+        if (hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            && hasPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+            && hasPermission(Manifest.permission.CAMERA)
+        ) {
+            val galleryIntent =
+                Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            resultLauncher.launch(galleryIntent)
+        } else {
+            permReqLauncherGallery.launch(
+                PERMISSIONS
+            )
+        }
 
+    }
+
+    private var resultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                EventBus.getDefault().post(result.data?.data)
+
+
+            }
+        }
+
+    private val permReqLauncherGallery =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
+            val granted = permissions.entries.all {
+                it.value == true
+            }
+            if (granted) {
+                val galleryIntent =
+                    Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                resultLauncher.launch(galleryIntent)
+            }
+        }
 
 }

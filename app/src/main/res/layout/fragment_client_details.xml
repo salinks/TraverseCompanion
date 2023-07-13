@@ -12,7 +12,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#f0f0f0"
-            android:overScrollMode="never">
+            android:overScrollMode="never"
+            android:visibility="visible">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -40,8 +41,8 @@
                         android:background="@drawable/cd_bg" />
 
                     <TextView
-                        android:id="@+id/tvCreatedOn"
-                        style="@style/medium_text"
+                        android:id="@+id/tvClientStatus"
+                        style="@style/big_text_bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/centerDiv"
@@ -50,9 +51,9 @@
                         android:layout_marginEnd="@dimen/_10sdp"
                         android:layout_marginBottom="@dimen/_10sdp"
                         android:layout_toEndOf="@+id/cvClientImage"
+                        android:letterSpacing=".2"
                         android:textAllCaps="true"
-                        android:textColor="@color/grey"
-                        android:textSize="@dimen/_11sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/cvClientImage"
@@ -360,7 +361,6 @@
                                 android:layout_height="match_parent"
                                 android:gravity="center|start"
                                 android:paddingHorizontal="@dimen/_10sdp"
-                                android:text="View History"
                                 android:textColor="@color/grey"
                                 android:textSize="@dimen/_10sdp" />
                         </RelativeLayout>
@@ -403,7 +403,339 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_5sdp"
-                    android:layout_marginVertical="@dimen/_10sdp"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/_5sdp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_30sdp">
+
+                            <TextView
+
+                                style="@style/big_text_bold"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center|start"
+                                android:paddingHorizontal="@dimen/_10sdp"
+                                android:text="@string/system_data_info"
+                                android:textColor="@color/themeTextColor"
+                                android:textSize="@dimen/_10sdp" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height=".5dp"
+                                android:layout_alignParentBottom="true"
+                                android:background="@color/grey" />
+
+
+
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lnSystemInfoContent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingVertical="@dimen/_5sdp">
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_25sdp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_toStartOf="@+id/lnrEditLeadHead"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+
+                                        style="@style/medium_text"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="3.5"
+                                        android:gravity="center|start"
+                                        android:paddingStart="@dimen/_5sdp"
+                                        android:text="@string/lead_head"
+                                        android:textColor="@color/themeTextColor"
+                                        android:textSize="@dimen/_9sdp" />
+
+                                    <TextView
+
+                                        android:id="@+id/tvLeadHead"
+                                        style="@style/medium_text"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="6.5"
+                                        android:gravity="center|start"
+                                        android:textColor="@color/themeTextColor"
+                                        android:textSize="@dimen/_9sdp" />
+
+                                </LinearLayout>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height=".1dp"
+                                    android:alpha=".3"
+                                    android:layout_alignParentBottom="true"
+                                    android:background="@color/grey" />
+
+                                <LinearLayout
+                                    android:id="@+id/lnrEditLeadHead"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_alignParentEnd="true"
+                                    android:gravity="center"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_20sdp"
+                                        android:layout_height="@dimen/_20sdp"
+                                        android:layout_marginHorizontal="@dimen/_5sdp"
+                                        android:padding="@dimen/_3sdp"
+                                        android:src="@drawable/edit" />
+
+
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_25sdp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_toStartOf="@+id/lnrEditDatabase"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+
+                                        style="@style/medium_text"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="3.5"
+                                        android:gravity="center|start"
+                                        android:paddingStart="@dimen/_5sdp"
+                                        android:text="@string/database_name"
+                                        android:textColor="@color/themeTextColor"
+                                        android:textSize="@dimen/_9sdp" />
+
+                                    <TextView
+
+                                        android:id="@+id/tvDataBaseName"
+                                        style="@style/medium_text"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="6.5"
+                                        android:gravity="center|start"
+                                        android:textColor="@color/themeTextColor"
+                                        android:textSize="@dimen/_9sdp" />
+
+                                </LinearLayout>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height=".1dp"
+                                    android:alpha=".3"
+                                    android:layout_alignParentBottom="true"
+                                    android:background="@color/grey" />
+
+                                <LinearLayout
+                                    android:id="@+id/lnrEditDatabase"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_alignParentEnd="true"
+                                    android:gravity="center"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_20sdp"
+                                        android:layout_height="@dimen/_20sdp"
+                                        android:layout_marginHorizontal="@dimen/_5sdp"
+                                        android:padding="@dimen/_3sdp"
+                                        android:src="@drawable/edit" />
+
+
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_25sdp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_toStartOf="@+id/lnrEditClientType"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+
+                                        style="@style/medium_text"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="3.5"
+                                        android:gravity="center|start"
+                                        android:paddingStart="@dimen/_5sdp"
+                                        android:text="@string/client_type"
+                                        android:textColor="@color/themeTextColor"
+                                        android:textSize="@dimen/_9sdp" />
+
+                                    <TextView
+
+                                        android:id="@+id/tvClientType"
+                                        style="@style/medium_text"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="6.5"
+                                        android:gravity="center|start"
+                                        android:textColor="@color/themeTextColor"
+                                        android:textSize="@dimen/_9sdp" />
+
+                                </LinearLayout>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height=".1dp"
+                                    android:alpha=".3"
+                                    android:layout_alignParentBottom="true"
+                                    android:background="@color/grey" />
+
+                                <LinearLayout
+                                    android:id="@+id/lnrEditClientType"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_alignParentEnd="true"
+                                    android:gravity="center"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_20sdp"
+                                        android:layout_height="@dimen/_20sdp"
+                                        android:layout_marginHorizontal="@dimen/_5sdp"
+                                        android:padding="@dimen/_3sdp"
+                                        android:src="@drawable/edit" />
+
+
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_25sdp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginEnd="@dimen/_27sdp"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+
+                                        style="@style/medium_text"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="3.5"
+                                        android:gravity="center|start"
+                                        android:paddingStart="@dimen/_5sdp"
+                                        android:text="@string/client_stage"
+                                        android:textColor="@color/themeTextColor"
+                                        android:textSize="@dimen/_9sdp" />
+
+                                    <TextView
+
+                                        android:id="@+id/tvClientStage"
+                                        style="@style/medium_text"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="6.5"
+                                        android:gravity="center|start"
+                                        android:textColor="@color/themeTextColor"
+                                        android:textSize="@dimen/_9sdp" />
+
+                                </LinearLayout>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height=".1dp"
+                                    android:alpha=".3"
+                                    android:layout_alignParentBottom="true"
+                                    android:background="@color/grey" />
+
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_25sdp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginEnd="@dimen/_27sdp"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+
+                                        style="@style/medium_text"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="3.5"
+                                        android:gravity="center|start"
+                                        android:paddingStart="@dimen/_5sdp"
+                                        android:text="@string/followup_date"
+                                        android:textColor="@color/themeTextColor"
+                                        android:textSize="@dimen/_9sdp" />
+
+                                    <TextView
+
+                                        android:id="@+id/tvFollowUpDate"
+                                        style="@style/medium_text"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="6.5"
+                                        android:gravity="center|start"
+                                        android:textColor="@color/themeTextColor"
+                                        android:textSize="@dimen/_9sdp" />
+
+                                </LinearLayout>
+
+
+
+
+
+                            </RelativeLayout>
+
+
+
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:layout_marginVertical="@dimen/_5sdp"
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="@dimen/_5sdp"
                     app:cardElevation="0dp">
@@ -560,6 +892,36 @@
                                     android:textSize="@dimen/_9sdp" />
 
                             </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+
+                                    style="@style/medium_text"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:gravity="center|start"
+                                    android:paddingStart="@dimen/_5sdp"
+                                    android:text="@string/created_on"
+                                    android:textColor="@color/themeTextColor"
+                                    android:textSize="@dimen/_9sdp" />
+
+                                <TextView
+
+                                    android:id="@+id/tvCreatedOn"
+                                    style="@style/medium_text"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="7"
+                                    android:gravity="center|start"
+                                    android:textColor="@color/themeTextColor"
+                                    android:textSize="@dimen/_9sdp" />
+
+                            </LinearLayout>
                         </LinearLayout>
 
                     </LinearLayout>
@@ -571,6 +933,35 @@
 
 
         </androidx.core.widget.NestedScrollView>
+
+        <LinearLayout
+            android:id="@+id/lnrProgress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/progressView"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp" />
+
+            <TextView
+
+                style="@style/big_text_bold"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:gravity="center"
+                android:letterSpacing=".4"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:text="please wait"
+                android:textAllCaps="true"
+                android:textColor="@color/themeTextColor"
+                android:textSize="@dimen/_10sdp" />
+        </LinearLayout>
 
     </RelativeLayout>
 

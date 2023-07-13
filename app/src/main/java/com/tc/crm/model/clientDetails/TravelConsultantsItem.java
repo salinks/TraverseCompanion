@@ -2,7 +2,7 @@ package com.tc.crm.model.clientDetails;
 
 import com.google.gson.annotations.SerializedName;
 
-public class TrvavelConsultantsItem{
+public class TravelConsultantsItem {
 
 	@SerializedName("name")
 	public String name;

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/tvSpnItem"
+            style="@style/medium_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="start|center"
+            android:minHeight="@dimen/_30sdp"
+            android:paddingHorizontal="@dimen/_5sdp"
+            android:textColor="@color/themeTextColor"
+            android:textSize="@dimen/_12sdp" />
+
+    </RelativeLayout>
+</layout>
