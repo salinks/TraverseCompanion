@@ -5,6 +5,7 @@ import com.tc.crm.data.model.CommonResult;
 import com.tc.crm.model.clientDetails.ClientDetailsRequest;
 import com.tc.crm.model.clientDetails.ClientDetailsResponse;
 import com.tc.crm.model.clientDetails.req.BasicInfoUpdateRequest;
+import com.tc.crm.model.clientDetails.req.ContactUpdateRequest;
 import com.tc.crm.model.clientDetails.req.CountryUploadRequest;
 import com.tc.crm.model.clientDetails.req.IntakeSectionUpdateRequest;
 import com.tc.crm.model.clientDetails.req.UpdateClientTypeRequest;
@@ -124,6 +125,27 @@ public class EditClientPresenter {
         tcService
                 .getAPI()
                 .updateBasicInfo(dataModal)
+                .enqueue(new Callback<CommonResult>() {
+                    @Override
+                    public void onResponse(Call<CommonResult> call, Response<CommonResult> res) {
+                        mView.onCommonResult(res.body());
+                    }
+
+                    @Override
+                    public void onFailure(Call<CommonResult> call, Throwable t) {
+                        try {
+                            mView.onError("Something went wrong");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+
+    public void updateContactInfo(ContactUpdateRequest dataModal) {
+        tcService
+                .getAPI()
+                .updateContactInfo(dataModal)
                 .enqueue(new Callback<CommonResult>() {
                     @Override
                     public void onResponse(Call<CommonResult> call, Response<CommonResult> res) {

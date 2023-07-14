@@ -3,6 +3,7 @@ package com.tc.crm.ui.home
 import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -686,6 +687,10 @@ class HomeActivity : BaseActivity(), HomeView, OnClickListener {
         Manifest.permission.READ_EXTERNAL_STORAGE,
         Manifest.permission.WRITE_EXTERNAL_STORAGE
     )
+
+    var CALL_PERMISSIONS = arrayOf(
+        Manifest.permission.CALL_PHONE
+    )
     fun pickProfileImage() {
         if (hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
             && hasPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -701,6 +706,29 @@ class HomeActivity : BaseActivity(), HomeView, OnClickListener {
         }
 
     }
+
+    var phoneNUmberToCall=""
+    fun makeCall(phoneNUmber: String) {
+        if (hasPermission(Manifest.permission.CALL_PHONE)) {
+            val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:$phoneNUmber"))
+            startActivity(intent)
+        } else {
+            phoneNUmberToCall =phoneNUmber
+            permReqLauncherCall.launch(CALL_PERMISSIONS)
+        }
+    }
+
+
+    private val permReqLauncherCall =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
+            val granted = permissions.entries.all {
+                it.value == true
+            }
+            if (granted) {
+                val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:$phoneNUmberToCall"))
+                startActivity(intent)
+            }
+        }
 
     private var resultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->

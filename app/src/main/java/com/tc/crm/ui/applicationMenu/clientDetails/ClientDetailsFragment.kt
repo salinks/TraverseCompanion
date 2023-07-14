@@ -93,6 +93,12 @@ class ClientDetailsFragment : BaseFragment(),
         binding.lnrEditDatabase.setOnClickListener(this)
         binding.lnrEditClientType.setOnClickListener(this)
         binding.lnrEditLeadHead.setOnClickListener(this)
+        binding.lnrCallAbroadPhone.setOnClickListener(this)
+        binding.lnrCallParent.setOnClickListener(this)
+        binding.lnrCallClient.setOnClickListener(this)
+        binding.lnrEditContact.setOnClickListener(this)
+
+
     }
 
 
@@ -390,6 +396,53 @@ class ClientDetailsFragment : BaseFragment(),
                 binding.lnrEditClientType.visibility = View.INVISIBLE
             }
 
+            var parentPhone = ""
+            if (!TextUtils.isEmpty(clientInfo.pPhoneNumber)) {
+                parentPhone = "+" + clientInfo.pPhoneCode + clientInfo.pPhoneNumber
+            }
+            var abroadContact = ""
+            if (!TextUtils.isEmpty(clientInfo.aPhoneNumber)) {
+                abroadContact = "+" + clientInfo.cmPhoneCode + clientInfo.aPhoneNumber
+            }
+            var addressLine = ""
+            if (!TextUtils.isEmpty(clientInfo.addressOne)) {
+                addressLine =
+                     clientInfo.addressOne + ", " + clientInfo.addressTwo + ", " + clientInfo.cityState + ", Pin Code - " + clientInfo.pinCode
+            }
+            binding.tvEmail.text = ":  " + clientInfo.emailAddress
+            binding.tvPhone.text = ":  +" + clientInfo.phoneCode + clientInfo.phoneNumber
+            binding.tvParentPhone.text = ":  $parentPhone"
+            binding.tvAbroadContact.text = ":  $abroadContact"
+            binding.tvAddress.text = ":  $addressLine"
+
+            if (!TextUtils.isEmpty(clientInfo.phoneNumber)
+                && (clientInfo.isSuperAdmin
+                        || clientInfo.staffId.equals(PreferenceManager.getInstance().userId))
+            ) {
+                binding.lnrCallClient.visibility = View.VISIBLE
+            } else {
+                binding.lnrCallClient.visibility = View.INVISIBLE
+            }
+
+            if (!TextUtils.isEmpty(clientInfo.pPhoneNumber)
+                && (clientInfo.isSuperAdmin
+                        || clientInfo.staffId.equals(PreferenceManager.getInstance().userId))
+            ) {
+                binding.lnrCallParent.visibility = View.VISIBLE
+            } else {
+                binding.lnrCallParent.visibility = View.INVISIBLE
+            }
+
+
+            if (!TextUtils.isEmpty(clientInfo.aPhoneNumber)
+                && (clientInfo.isSuperAdmin
+                        || clientInfo.staffId.equals(PreferenceManager.getInstance().userId))
+            ) {
+                binding.lnrCallAbroadPhone.visibility = View.VISIBLE
+            } else {
+                binding.lnrCallAbroadPhone.visibility = View.INVISIBLE
+            }
+
 
 //======================================
         }
@@ -526,6 +579,22 @@ class ClientDetailsFragment : BaseFragment(),
             R.id.lnrEditLeadHead -> {
                 GlobalVariables.ViewName = "STAFF"
                 pushFragment(EditClientFragment())
+            }
+            R.id.lnrEditContact -> {
+                GlobalVariables.ViewName = "CONTACT_INFO"
+                pushFragment(EditClientFragment())
+            }
+
+            R.id.lnrCallAbroadPhone -> {
+                (activity as HomeActivity).makeCall("+"+clientInfo.cmPhoneCode+clientInfo.aPhoneNumber)
+            }
+
+            R.id.lnrCallParent -> {
+                (activity as HomeActivity).makeCall("+"+clientInfo.pPhoneCode+clientInfo.pPhoneNumber)
+            }
+
+            R.id.lnrCallClient -> {
+                (activity as HomeActivity).makeCall("+"+clientInfo.phoneCode+clientInfo.phoneNumber)
             }
 
 

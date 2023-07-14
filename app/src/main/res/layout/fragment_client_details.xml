@@ -435,7 +435,6 @@
                                 android:background="@color/grey" />
 
 
-
                         </RelativeLayout>
 
                         <LinearLayout
@@ -444,6 +443,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
                             android:paddingVertical="@dimen/_5sdp">
+
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_25sdp">
@@ -482,8 +482,8 @@
                                 <View
                                     android:layout_width="match_parent"
                                     android:layout_height=".1dp"
-                                    android:alpha=".3"
                                     android:layout_alignParentBottom="true"
+                                    android:alpha=".3"
                                     android:background="@color/grey" />
 
                                 <LinearLayout
@@ -500,7 +500,6 @@
                                         android:layout_marginHorizontal="@dimen/_5sdp"
                                         android:padding="@dimen/_3sdp"
                                         android:src="@drawable/edit" />
-
 
 
                                 </LinearLayout>
@@ -545,8 +544,8 @@
                                 <View
                                     android:layout_width="match_parent"
                                     android:layout_height=".1dp"
-                                    android:alpha=".3"
                                     android:layout_alignParentBottom="true"
+                                    android:alpha=".3"
                                     android:background="@color/grey" />
 
                                 <LinearLayout
@@ -563,7 +562,6 @@
                                         android:layout_marginHorizontal="@dimen/_5sdp"
                                         android:padding="@dimen/_3sdp"
                                         android:src="@drawable/edit" />
-
 
 
                                 </LinearLayout>
@@ -608,8 +606,8 @@
                                 <View
                                     android:layout_width="match_parent"
                                     android:layout_height=".1dp"
-                                    android:alpha=".3"
                                     android:layout_alignParentBottom="true"
+                                    android:alpha=".3"
                                     android:background="@color/grey" />
 
                                 <LinearLayout
@@ -626,7 +624,6 @@
                                         android:layout_marginHorizontal="@dimen/_5sdp"
                                         android:padding="@dimen/_3sdp"
                                         android:src="@drawable/edit" />
-
 
 
                                 </LinearLayout>
@@ -671,10 +668,9 @@
                                 <View
                                     android:layout_width="match_parent"
                                     android:layout_height=".1dp"
-                                    android:alpha=".3"
                                     android:layout_alignParentBottom="true"
+                                    android:alpha=".3"
                                     android:background="@color/grey" />
-
 
 
                             </RelativeLayout>
@@ -715,13 +711,7 @@
                                 </LinearLayout>
 
 
-
-
-
                             </RelativeLayout>
-
-
-
 
 
                         </LinearLayout>
@@ -929,6 +919,364 @@
                 </com.google.android.material.card.MaterialCardView>
 
 
+                <com.google.android.material.card.MaterialCardView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/_5sdp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_30sdp">
+
+                            <TextView
+
+                                style="@style/big_text_bold"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center|start"
+                                android:paddingHorizontal="@dimen/_10sdp"
+                                android:text="@string/contact"
+                                android:textColor="@color/themeTextColor"
+                                android:textSize="@dimen/_10sdp" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height=".5dp"
+                                android:layout_alignParentBottom="true"
+                                android:background="@color/grey" />
+
+                            <LinearLayout
+                                android:id="@+id/lnrEditContact"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="@dimen/_5sdp"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:paddingHorizontal="@dimen/_5sdp">
+
+                                <ImageView
+                                    android:layout_width="@dimen/_20sdp"
+                                    android:layout_height="@dimen/_20sdp"
+                                    android:layout_marginHorizontal="@dimen/_5sdp"
+                                    android:padding="@dimen/_3sdp"
+                                    android:src="@drawable/edit" />
+
+                                <TextView
+                                    style="@style/medium_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center|start"
+                                    android:text="@string/edit_info"
+                                    android:textColor="@color/themeTextColor"
+                                    android:textSize="@dimen/_9sdp" />
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lnrContactContent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingVertical="@dimen/_5sdp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_25sdp">
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_toStartOf="@+id/lnrCallClient"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+
+                                        style="@style/medium_text"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="3.5"
+                                        android:gravity="center|start"
+                                        android:paddingStart="@dimen/_5sdp"
+                                        android:text="@string/phone"
+                                        android:textColor="@color/themeTextColor"
+                                        android:textSize="@dimen/_9sdp" />
+
+                                    <TextView
+
+                                        android:id="@+id/tvPhone"
+                                        style="@style/medium_text"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="6.5"
+                                        android:gravity="center|start"
+                                        android:textColor="@color/themeTextColor"
+                                        android:textSize="@dimen/_9sdp" />
+
+                                </LinearLayout>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height=".1dp"
+                                    android:layout_alignParentBottom="true"
+                                    android:alpha=".3"
+                                    android:background="@color/grey" />
+
+                                <LinearLayout
+                                    android:id="@+id/lnrCallClient"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_alignParentEnd="true"
+                                    android:gravity="center"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_20sdp"
+                                        android:layout_height="@dimen/_20sdp"
+                                        android:layout_marginHorizontal="@dimen/_5sdp"
+                                        android:padding="@dimen/_3sdp"
+                                        android:src="@drawable/call" />
+
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_25sdp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_toStartOf="@+id/lnrCallParent"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+
+                                        style="@style/medium_text"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="3.5"
+                                        android:gravity="center|start"
+                                        android:paddingStart="@dimen/_5sdp"
+                                        android:text="@string/phone_parent"
+                                        android:textColor="@color/themeTextColor"
+                                        android:textSize="@dimen/_9sdp" />
+
+                                    <TextView
+
+                                        android:id="@+id/tvParentPhone"
+                                        style="@style/medium_text"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="6.5"
+                                        android:gravity="center|start"
+                                        android:textColor="@color/themeTextColor"
+                                        android:textSize="@dimen/_9sdp" />
+
+                                </LinearLayout>
+
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height=".1dp"
+                                    android:layout_alignParentBottom="true"
+                                    android:alpha=".3"
+                                    android:background="@color/grey" />
+
+                                <LinearLayout
+                                    android:id="@+id/lnrCallParent"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_alignParentEnd="true"
+                                    android:gravity="center"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_20sdp"
+                                        android:layout_height="@dimen/_20sdp"
+                                        android:layout_marginHorizontal="@dimen/_5sdp"
+                                        android:padding="@dimen/_3sdp"
+                                        android:src="@drawable/call" />
+
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_25sdp">
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_toStartOf="@+id/lnrCallAbroadPhone"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+
+                                        style="@style/medium_text"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="3.5"
+                                        android:gravity="center|start"
+                                        android:paddingStart="@dimen/_5sdp"
+                                        android:text="@string/abroad_contact"
+                                        android:textColor="@color/themeTextColor"
+                                        android:textSize="@dimen/_9sdp" />
+
+                                    <TextView
+
+                                        android:id="@+id/tvAbroadContact"
+                                        style="@style/medium_text"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="6.5"
+                                        android:gravity="center|start"
+                                        android:textColor="@color/themeTextColor"
+                                        android:textSize="@dimen/_9sdp" />
+
+                                </LinearLayout>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height=".1dp"
+                                    android:layout_alignParentBottom="true"
+                                    android:alpha=".3"
+                                    android:background="@color/grey" />
+
+                                <LinearLayout
+                                    android:id="@+id/lnrCallAbroadPhone"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_alignParentEnd="true"
+                                    android:gravity="center"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_20sdp"
+                                        android:layout_height="@dimen/_20sdp"
+                                        android:layout_marginHorizontal="@dimen/_5sdp"
+                                        android:padding="@dimen/_3sdp"
+                                        android:src="@drawable/call" />
+
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_25sdp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginEnd="@dimen/_27sdp"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+
+                                        style="@style/medium_text"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="3.5"
+                                        android:gravity="center|start"
+                                        android:paddingStart="@dimen/_5sdp"
+                                        android:text="@string/email_address"
+                                        android:textColor="@color/themeTextColor"
+                                        android:textSize="@dimen/_9sdp" />
+
+                                    <TextView
+
+                                        android:id="@+id/tvEmail"
+                                        style="@style/medium_text"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="6.5"
+                                        android:gravity="center|start"
+                                        android:textColor="@color/themeTextColor"
+                                        android:textSize="@dimen/_9sdp" />
+
+                                </LinearLayout>
+
+
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height=".1dp"
+                                    android:layout_alignParentBottom="true"
+                                    android:alpha=".3"
+                                    android:background="@color/grey" />
+
+
+                            </RelativeLayout>
+
+
+
+
+
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:layout_marginBottom="@dimen/_5sdp"
+                                android:orientation="horizontal">
+
+                                <TextView
+
+                                    style="@style/medium_text"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3.2"
+                                    android:gravity="center|start"
+                                    android:paddingStart="@dimen/_5sdp"
+                                    android:text="@string/address"
+                                    android:textColor="@color/themeTextColor"
+                                    android:textSize="@dimen/_9sdp" />
+
+                                <TextView
+
+                                    android:id="@+id/tvAddress"
+                                    style="@style/medium_text"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="6.8"
+                                    android:gravity="center|start"
+
+                                    android:textColor="@color/themeTextColor"
+                                    android:textSize="@dimen/_9sdp" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp" />
             </LinearLayout>
 
 

@@ -21,11 +21,13 @@ import com.tc.crm.base.BaseFragment
 import com.tc.crm.data.model.CommonResult
 import com.tc.crm.databinding.FragmentEditClientBinding
 import com.tc.crm.juzdevz.spinner.SpinnerTextFormatter
-import com.tc.crm.model.clientDetails.StaticDataModel
+import com.tc.crm.model.clientDetails.CountryItem
 import com.tc.crm.model.clientDetails.CountryMasterItem
 import com.tc.crm.model.clientDetails.IntakeSectionsItem
+import com.tc.crm.model.clientDetails.StaticDataModel
 import com.tc.crm.model.clientDetails.TravelConsultantsItem
 import com.tc.crm.model.clientDetails.req.BasicInfoUpdateRequest
+import com.tc.crm.model.clientDetails.req.ContactUpdateRequest
 import com.tc.crm.model.clientDetails.req.CountryUploadRequest
 import com.tc.crm.model.clientDetails.req.IntakeSectionUpdateRequest
 import com.tc.crm.model.clientDetails.req.UpdateClientTypeRequest
@@ -34,6 +36,7 @@ import com.tc.crm.ui.applicationMenu.editClient.fragments.DDIntakeSectionsFragme
 import com.tc.crm.utils.GlobalVariables.CLIENT_DETAILS
 import com.tc.crm.utils.GlobalVariables.ViewName
 import com.tc.crm.utils.PreferenceManager
+import com.tc.crm.utils.TCUtils
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import java.text.SimpleDateFormat
@@ -96,6 +99,8 @@ class EditClientFragment : BaseFragment(),
         binding.cvDOB.setOnClickListener(this)
         binding.btnUpdateBasicInfoCancel.setOnClickListener(this)
         binding.btnUpdateBasicInfo.setOnClickListener(this)
+        binding.btnUpdateContactInfoCancel.setOnClickListener(this)
+        binding.btnUpdateContactInfo.setOnClickListener(this)
 
     }
 
@@ -170,6 +175,12 @@ class EditClientFragment : BaseFragment(),
                 setOldBasicInfoData()
                 showTitle("Update Basic Info")
                 binding.lnrBasicInfoUpdate.visibility = View.VISIBLE
+            }
+
+            "CONTACT_INFO" -> {
+                setOldContactInfoData()
+                showTitle("Edit Contact Info")
+                binding.lnrContactInfoUpdate.visibility = View.VISIBLE
             }
         }
     }
@@ -296,7 +307,7 @@ class EditClientFragment : BaseFragment(),
         binding.etSurname.setText(CLIENT_DETAILS.clientInfo.surname)
 
         dob = CLIENT_DETAILS.clientInfo.dob
-
+        setDOBInViews()
         var fmtM = SimpleDateFormat("MM", Locale.ENGLISH)
         var fmtD = SimpleDateFormat("dd", Locale.ENGLISH)
         var fmtY = SimpleDateFormat("YYYY", Locale.ENGLISH)
@@ -317,6 +328,15 @@ class EditClientFragment : BaseFragment(),
         val td = fmtD.format(resultDate).toInt()
         val ty = fmtY.format(resultDate).toInt()
 
+        var currDate = DateUtils.getTimeMiles(fy, fm, fd)
+        if (!TextUtils.isEmpty(dob) && dob != "0000-00-00 00:00:00") {
+            val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH)
+            val mDate = formatter.parse(dob)
+            val cm = fmtM.format(mDate).toInt()
+            val cd = fmtD.format(mDate).toInt()
+            val cy = fmtY.format(mDate).toInt()
+            currDate = DateUtils.getTimeMiles(cy, cm, cd)
+        }
 
 
         datePickerPopup = DatePickerPopup.Builder()
@@ -326,10 +346,10 @@ class EditClientFragment : BaseFragment(),
             .pickerMode(DatePicker.DAY_ON_FIRST)
             .textSize(19)
             .startDate(DateUtils.getTimeMiles(ty, tm, td))
-            .currentDate(DateUtils.getTimeMiles(fy, fm, fd))
+            .currentDate(currDate)
             .endDate(DateUtils.getTimeMiles(fy, fm, fd))
             .listener { dp, date, day, month, year ->
-                dob = "$year-$month-$day  00:00:00"
+                dob = "$year-${month + 1}-$day  00:00:00"
                 setDOBInViews()
             }
             .build()
@@ -337,9 +357,55 @@ class EditClientFragment : BaseFragment(),
     }
 
 
+    private fun setOldContactInfoData() {
+        binding.etEmailAddress.setText(CLIENT_DETAILS.clientInfo.emailAddress)
+        binding.etClientPhoneNumber.setText(CLIENT_DETAILS.clientInfo.phoneNumber)
+        binding.etParentPhoneNumber.setText(CLIENT_DETAILS.clientInfo.pPhoneNumber)
+        binding.etAbroadPhoneNumber.setText(CLIENT_DETAILS.clientInfo.aPhoneNumber)
+        binding.etAddressLineOne.setText(CLIENT_DETAILS.clientInfo.addressOne)
+        binding.etAddressLineTwo.setText(CLIENT_DETAILS.clientInfo.addressTwo)
+        binding.etCity.setText(CLIENT_DETAILS.clientInfo.cityState)
+        binding.etPincode.setText(CLIENT_DETAILS.clientInfo.pinCode)
+
+        val textFormatter =
+            SpinnerTextFormatter<CountryItem> { mModel -> SpannableString("+" + mModel.phonecode) }
+
+
+        binding.spnClientPhoneCode.setSpinnerTextFormatter(textFormatter)
+        binding.spnClientPhoneCode.setSelectedTextFormatter(textFormatter)
+
+        binding.spnParentPhoneCode.setSpinnerTextFormatter(textFormatter)
+        binding.spnParentPhoneCode.setSelectedTextFormatter(textFormatter)
+
+
+        binding.spnClientPhoneCode.attachDataSource(CLIENT_DETAILS.country)
+        if (!TextUtils.isEmpty(CLIENT_DETAILS.clientInfo.phoneCode) && CLIENT_DETAILS.clientInfo.phoneCode != "") {
+            var ind =
+                CLIENT_DETAILS.country.indexOf(CLIENT_DETAILS.country.filter {
+                    it.phonecode.equals(
+                        CLIENT_DETAILS.clientInfo.phoneCode
+                    )
+                }[0])
+            binding.spnClientPhoneCode.selectedIndex = ind
+        }
+
+        binding.spnParentPhoneCode.attachDataSource(CLIENT_DETAILS.country)
+        if (!TextUtils.isEmpty(CLIENT_DETAILS.clientInfo.pPhoneCode) && CLIENT_DETAILS.clientInfo.pPhoneCode != "") {
+            var ind =
+                CLIENT_DETAILS.country.indexOf(CLIENT_DETAILS.country.filter {
+                    it.phonecode.equals(
+                        CLIENT_DETAILS.clientInfo.pPhoneCode
+                    )
+                }[0])
+            binding.spnParentPhoneCode.selectedIndex = ind
+        }
+
+
+    }
+
+
     private fun setDOBInViews() {
-        if(!TextUtils.isEmpty(dob) && dob != "0000-00-00 00:00:00")
-        {
+        if (!TextUtils.isEmpty(dob) && dob != "0000-00-00 00:00:00") {
             binding.tvDOB.text = com.tc.crm.utils.DateUtils.oneFormatToAnother(
                 dob,
                 "yyyy-MM-dd HH:mm:ss",
@@ -387,6 +453,10 @@ class EditClientFragment : BaseFragment(),
                 onBackPressed()
             }
 
+            R.id.btnUpdateContactInfoCancel -> {
+                onBackPressed()
+            }
+
             R.id.btnUpdateCountry -> {
                 prepareCountryUploadRequestData()
             }
@@ -418,33 +488,83 @@ class EditClientFragment : BaseFragment(),
             R.id.btnUpdateStaff -> {
                 prepareStaffUpdate()
             }
+
             R.id.btnUpdateBasicInfo -> {
-                if(validateBasicInfoForm()){
+                if (validateBasicInfoForm()) {
                     prepareBasicInfoUpdate()
                 }
             }
+
             R.id.cvDOB -> {
                 datePickerPopup?.show()
             }
+
+            R.id.btnUpdateContactInfo -> {
+               prepareContactInfoUpdate()
+            }
+
+
         }
 
     }
 
+    private fun prepareContactInfoUpdate() {
+        if (TextUtils.isEmpty(binding.etClientPhoneNumber.text.toString().trim()) || binding.etClientPhoneNumber.text.toString().length <8) {
+            showMessage(2, "Please enter client a phone number")
+           return
+        }
+
+        if (!TextUtils.isEmpty(binding.etEmailAddress.text.toString().trim())){
+            if(!TCUtils.isEmailValid(binding.etEmailAddress.text.toString())){
+                showMessage(2, "Please enter a valid email address")
+                return
+            }
+        }
+
+        if (!TextUtils.isEmpty(binding.etPincode.text.toString().trim())){
+            if(binding.etPincode.text.toString().length <6){
+                showMessage(2, "Please enter a valid Pin Code")
+                return
+            }
+        }
+
+
+        val pPhoneCode = binding.spnParentPhoneCode.selectedItem as CountryItem
+        val cPhoneCode = binding.spnClientPhoneCode.selectedItem as CountryItem
+
+        var req = ContactUpdateRequest()
+        req.clientId = CLIENT_DETAILS.clientInfo.clientId
+        req.userId = PreferenceManager.getInstance().userId
+        req.emailAddress = binding.etEmailAddress.text.toString()
+        req.cPhoneNumber = binding.etClientPhoneNumber.text.toString()
+        req.aPhoneNumber = binding.etAbroadPhoneNumber.text.toString()
+        req.pPhoneNumber = binding.etParentPhoneNumber.text.toString()
+        req.cPhoneCode = cPhoneCode.phonecode
+        req.pPhoneCode = pPhoneCode.phonecode
+        req.addressOne = binding.etAddressLineOne.text.toString()
+        req.addressTwo =binding.etAddressLineTwo.text.toString()
+        req.cityState =binding.etCity.text.toString()
+        req.pinCode =binding.etPincode.text.toString()
+
+        showAlertDialog(0, requireActivity(), "Please Wait", "")
+        mPresenter?.updateContactInfo(req)
+
+    }
 
 
     private fun validateBasicInfoForm(): Boolean {
-        if(TextUtils.isEmpty(binding.etGivenName.text.toString().trim())){
-            showMessage(2,"Please enter client given name")
+        if (TextUtils.isEmpty(binding.etGivenName.text.toString().trim())) {
+            showMessage(2, "Please enter client given name")
             return false
         }
 
-        if(TextUtils.isEmpty(binding.etSurname.text.toString().trim())){
-            showMessage(2,"Please enter client surname")
+        if (TextUtils.isEmpty(binding.etSurname.text.toString().trim())) {
+            showMessage(2, "Please enter client surname")
             return false
         }
 
-        if(TextUtils.isEmpty(dob) || dob == "0000-00-00 00:00:00"){
-            showMessage(2,"Please select date of birth")
+        if (TextUtils.isEmpty(dob) || dob == "0000-00-00 00:00:00") {
+            showMessage(2, "Please select date of birth")
             return false
         }
 

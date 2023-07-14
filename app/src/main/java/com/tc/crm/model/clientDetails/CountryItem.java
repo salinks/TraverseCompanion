@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 public class CountryItem{
 
 	@SerializedName("numcode")
-	public int numcode;
+	public String numcode;
 
 	@SerializedName("iso")
 	public String iso;
@@ -17,13 +17,13 @@ public class CountryItem{
 	public String nicename;
 
 	@SerializedName("phonecode")
-	public int phonecode;
+	public String phonecode;
 
 	@SerializedName("id")
-	public int id;
+	public String id;
 
 	@SerializedName("countryStatus")
-	public int countryStatus;
+	public String countryStatus;
 
 	@SerializedName("iso3")
 	public String iso3;

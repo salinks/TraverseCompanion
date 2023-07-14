@@ -13,6 +13,7 @@ import com.tc.crm.model.amenities.AmenitiesResponse;
 import com.tc.crm.model.clientDetails.ClientDetailsRequest;
 import com.tc.crm.model.clientDetails.ClientDetailsResponse;
 import com.tc.crm.model.clientDetails.req.BasicInfoUpdateRequest;
+import com.tc.crm.model.clientDetails.req.ContactUpdateRequest;
 import com.tc.crm.model.clientDetails.req.CountryUploadRequest;
 import com.tc.crm.model.clientDetails.req.IntakeSectionUpdateRequest;
 import com.tc.crm.model.clientDetails.req.UpdateClientTypeRequest;
@@ -208,5 +209,8 @@ public interface TCAPI {
 
     @POST("UpdateClientBasicInfo")
     Call<CommonResult> updateBasicInfo(@Body BasicInfoUpdateRequest dataModal);
+
+    @POST("UpdateClientContactInfo")
+    Call<CommonResult> updateContactInfo(@Body ContactUpdateRequest dataModal);
 
 }
