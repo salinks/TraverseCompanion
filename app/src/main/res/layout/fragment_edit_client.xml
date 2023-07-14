@@ -366,7 +366,7 @@
                   android:layout_height="match_parent"
                   android:orientation="vertical"
                   android:paddingHorizontal="@dimen/_10sdp"
-                  android:visibility="visible">
+                  android:visibility="gone">
 
                   <TextView
                       style="@style/medium_text"
@@ -505,6 +505,7 @@
                       android:layout_height="@dimen/_35sdp"
                       android:layout_margin="@dimen/_2sdp"
                       android:elevation="@dimen/_1sdp"
+                      android:id="@+id/cvDOB"
                       app:cardBackgroundColor="@color/white"
                       app:cardCornerRadius="@dimen/_4sdp"
                       app:cardElevation="@dimen/_3sdp">

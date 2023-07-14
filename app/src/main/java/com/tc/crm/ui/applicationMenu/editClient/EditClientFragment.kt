@@ -11,6 +11,9 @@ import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import com.ozcanalasalvar.library.utils.DateUtils
+import com.ozcanalasalvar.library.view.datePicker.DatePicker
+import com.ozcanalasalvar.library.view.popup.DatePickerPopup
 import com.tc.crm.R
 import com.tc.crm.TCApp.Companion.hideAlertDialog
 import com.tc.crm.TCApp.Companion.showAlertDialog
@@ -22,6 +25,7 @@ import com.tc.crm.model.clientDetails.StaticDataModel
 import com.tc.crm.model.clientDetails.CountryMasterItem
 import com.tc.crm.model.clientDetails.IntakeSectionsItem
 import com.tc.crm.model.clientDetails.TravelConsultantsItem
+import com.tc.crm.model.clientDetails.req.BasicInfoUpdateRequest
 import com.tc.crm.model.clientDetails.req.CountryUploadRequest
 import com.tc.crm.model.clientDetails.req.IntakeSectionUpdateRequest
 import com.tc.crm.model.clientDetails.req.UpdateClientTypeRequest
@@ -32,6 +36,10 @@ import com.tc.crm.utils.GlobalVariables.ViewName
 import com.tc.crm.utils.PreferenceManager
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 
 
 class EditClientFragment : BaseFragment(),
@@ -39,8 +47,9 @@ class EditClientFragment : BaseFragment(),
     lateinit var binding: FragmentEditClientBinding
 
     var mPresenter: EditClientPresenter? = null
-   // private var datePickerPopup: DatePickerPopup? = null
+    private var datePickerPopup: DatePickerPopup? = null
     var iSectionId = "0"
+    var dob = "0000-00-00 00:00:00"
 
     companion object {
         fun getInstance(): EditClientFragment {
@@ -84,6 +93,9 @@ class EditClientFragment : BaseFragment(),
         binding.btnUpdateClientType.setOnClickListener(this)
         binding.btnUpdateStaffCancel.setOnClickListener(this)
         binding.btnUpdateStaff.setOnClickListener(this)
+        binding.cvDOB.setOnClickListener(this)
+        binding.btnUpdateBasicInfoCancel.setOnClickListener(this)
+        binding.btnUpdateBasicInfo.setOnClickListener(this)
 
     }
 
@@ -283,6 +295,58 @@ class EditClientFragment : BaseFragment(),
         binding.etGivenName.setText(CLIENT_DETAILS.clientInfo.givenName)
         binding.etSurname.setText(CLIENT_DETAILS.clientInfo.surname)
 
+        dob = CLIENT_DETAILS.clientInfo.dob
+
+        var fmtM = SimpleDateFormat("MM", Locale.ENGLISH)
+        var fmtD = SimpleDateFormat("dd", Locale.ENGLISH)
+        var fmtY = SimpleDateFormat("YYYY", Locale.ENGLISH)
+
+
+        val date = Date()
+        val c1: Calendar = Calendar.getInstance()
+        c1.add(Calendar.YEAR, -10)
+        val resultDate1: Date = c1.time
+        val fm = fmtM.format(resultDate1).toInt()
+        val fd = fmtD.format(resultDate1).toInt()
+        val fy = fmtY.format(resultDate1).toInt()
+
+
+        c1.add(Calendar.YEAR, -50)
+        val resultDate: Date = c1.time
+        val tm = fmtM.format(resultDate).toInt()
+        val td = fmtD.format(resultDate).toInt()
+        val ty = fmtY.format(resultDate).toInt()
+
+
+
+        datePickerPopup = DatePickerPopup.Builder()
+            .from(activity)
+            .offset(3)
+            .darkModeEnabled(false)
+            .pickerMode(DatePicker.DAY_ON_FIRST)
+            .textSize(19)
+            .startDate(DateUtils.getTimeMiles(ty, tm, td))
+            .currentDate(DateUtils.getTimeMiles(fy, fm, fd))
+            .endDate(DateUtils.getTimeMiles(fy, fm, fd))
+            .listener { dp, date, day, month, year ->
+                dob = "$year-$month-$day  00:00:00"
+                setDOBInViews()
+            }
+            .build()
+
+    }
+
+
+    private fun setDOBInViews() {
+        if(!TextUtils.isEmpty(dob) && dob != "0000-00-00 00:00:00")
+        {
+            binding.tvDOB.text = com.tc.crm.utils.DateUtils.oneFormatToAnother(
+                dob,
+                "yyyy-MM-dd HH:mm:ss",
+                "dd-MM-yyyy"
+            )
+        }
+
     }
 
 
@@ -319,6 +383,10 @@ class EditClientFragment : BaseFragment(),
                 onBackPressed()
             }
 
+            R.id.btnUpdateBasicInfoCancel -> {
+                onBackPressed()
+            }
+
             R.id.btnUpdateCountry -> {
                 prepareCountryUploadRequestData()
             }
@@ -350,8 +418,55 @@ class EditClientFragment : BaseFragment(),
             R.id.btnUpdateStaff -> {
                 prepareStaffUpdate()
             }
+            R.id.btnUpdateBasicInfo -> {
+                if(validateBasicInfoForm()){
+                    prepareBasicInfoUpdate()
+                }
+            }
+            R.id.cvDOB -> {
+                datePickerPopup?.show()
+            }
         }
 
+    }
+
+
+
+    private fun validateBasicInfoForm(): Boolean {
+        if(TextUtils.isEmpty(binding.etGivenName.text.toString().trim())){
+            showMessage(2,"Please enter client given name")
+            return false
+        }
+
+        if(TextUtils.isEmpty(binding.etSurname.text.toString().trim())){
+            showMessage(2,"Please enter client surname")
+            return false
+        }
+
+        if(TextUtils.isEmpty(dob) || dob == "0000-00-00 00:00:00"){
+            showMessage(2,"Please select date of birth")
+            return false
+        }
+
+        return true
+    }
+
+
+    private fun prepareBasicInfoUpdate() {
+        val passType = binding.spnPassengerType.selectedItem as StaticDataModel
+        val gender = binding.spnGender.selectedItem as StaticDataModel
+        val country = binding.spnDestCountry.selectedItem as CountryMasterItem
+        var req = BasicInfoUpdateRequest()
+        req.clientId = CLIENT_DETAILS.clientInfo.clientId
+        req.userId = PreferenceManager.getInstance().userId
+        req.dob = dob
+        req.givenName = binding.etGivenName.text.toString().trim()
+        req.surName = binding.etSurname.text.toString().trim()
+        req.countryId = country.cId.toString()
+        req.gender = gender.id
+        req.passengerType = passType.id
+        showAlertDialog(0, requireActivity(), "Please Wait", "")
+        mPresenter?.updateBasicInfo(req)
     }
 
     private fun prepareStaffUpdate() {
