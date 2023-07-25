@@ -36,6 +36,9 @@ public class ClientDetailsResponse {
     @SerializedName("clientTypes")
     public List<StaticDataModel> clientTypes;
 
+    @SerializedName("ticketStatus")
+    public List<StaticDataModel> ticketStatus;
+
     @SerializedName("genderList")
     public List<StaticDataModel> genderList;
 

@@ -93,4 +93,16 @@
     <string name="address_line_2">Address Line 2</string>
     <string name="city_state">City / State</string>
     <string name="pincode">PinCode</string>
+    <string name="outbound_travel">Outbound Travel</string>
+    <string name="ticket_status">Ticket Status</string>
+    <string name="departure">Departure</string>
+    <string name="destination">Destination</string>
+    <string name="airport">Airport</string>
+    <string name="terminal">Terminal</string>
+    <string name="arrival">Arrival</string>
+    <string name="flight_ticket_status">Flight Ticket Status</string>
+    <string name="departure_time">Departure Time</string>
+    <string name="select_arrival_airport">Select Arrival Airport</string>
+    <string name="select_arrival_terminal">Select Arrival Terminal</string>
+    <string name="arrival_time">Arrival Time</string>
 </resources>

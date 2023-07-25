@@ -645,7 +645,7 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:paddingHorizontal="@dimen/_10sdp"
-                    android:visibility="visible">
+                    android:visibility="gone">
 
                     <TextView
                         style="@style/medium_text"
@@ -1110,6 +1110,369 @@
 
                     </LinearLayout>
                 </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/lnrOutboundTravelUpdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:visibility="visible">
+
+                    <TextView
+                        style="@style/medium_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_2sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:text="@string/flight_ticket_status"
+                        android:textSize="@dimen/_8sdp" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:elevation="@dimen/_1sdp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="@dimen/_4sdp"
+                        app:cardElevation="@dimen/_3sdp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            >
+
+                            <com.tc.crm.juzdevz.spinner.JDSpinner
+                                android:id="@+id/spnTicketStatus"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:spinnerMode="dropdown"
+                                tools:listitem="@layout/layout_spinner" />
+
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <LinearLayout
+                        android:layout_marginVertical="@dimen/_5sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/lnrTravelSection"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/medium_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:text="@string/departure_time"
+                            android:textSize="@dimen/_8sdp" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvDepDate"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_margin="@dimen/_2sdp"
+                                android:layout_weight="1"
+                                android:elevation="@dimen/_1sdp"
+                                app:cardBackgroundColor="@color/white"
+                                app:cardCornerRadius="@dimen/_4sdp"
+                                app:cardElevation="@dimen/_3sdp">
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    android:paddingHorizontal="@dimen/_5sdp">
+
+                                    <TextView
+                                        android:id="@+id/tvDepDate"
+                                        style="@style/medium_text"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="start|center"
+                                        android:paddingHorizontal="@dimen/_5sdp"
+                                        android:hint="DD-MM-YYYY"
+                                        android:textSize="@dimen/_11sdp" />
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_19sdp"
+                                        android:layout_height="@dimen/_19sdp"
+                                        android:layout_centerVertical="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:padding="@dimen/_3sdp"
+                                        android:src="@drawable/calendar"
+                                        app:tint="#7E7E7E" />
+
+                                </RelativeLayout>
+
+                            </com.google.android.material.card.MaterialCardView>
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvDepTime"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_margin="@dimen/_2sdp"
+                                android:layout_weight="1"
+                                android:elevation="@dimen/_1sdp"
+                                app:cardBackgroundColor="@color/white"
+                                app:cardCornerRadius="@dimen/_4sdp"
+                                app:cardElevation="@dimen/_3sdp">
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    android:paddingHorizontal="@dimen/_5sdp">
+
+                                    <TextView
+                                        android:id="@+id/tvDepTime"
+                                        style="@style/medium_text"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="start|center"
+                                        android:paddingHorizontal="@dimen/_5sdp"
+                                        android:hint="HH:MM"
+                                        android:textSize="@dimen/_11sdp" />
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_19sdp"
+                                        android:layout_height="@dimen/_19sdp"
+                                        android:layout_centerVertical="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:padding="@dimen/_3sdp"
+                                        android:src="@drawable/clock"
+                                        app:tint="#7E7E7E" />
+
+                                </RelativeLayout>
+
+                            </com.google.android.material.card.MaterialCardView>
+                        </LinearLayout>
+
+
+                        <TextView
+                            style="@style/medium_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="@string/select_arrival_airport"
+                            android:textSize="@dimen/_8sdp" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_35sdp"
+                            android:layout_margin="@dimen/_2sdp"
+                            android:elevation="@dimen/_1sdp"
+                            app:cardBackgroundColor="@color/white"
+                            app:cardCornerRadius="@dimen/_4sdp"
+                            app:cardElevation="@dimen/_3sdp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                >
+
+                                <com.tc.crm.juzdevz.spinner.JDSpinner
+                                    android:id="@+id/spnArrAirport"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:spinnerMode="dropdown"
+                                    tools:listitem="@layout/layout_spinner" />
+
+
+                            </LinearLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+
+
+                        <TextView
+                            style="@style/medium_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="@string/select_arrival_terminal"
+                            android:textSize="@dimen/_8sdp" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_35sdp"
+                            android:layout_margin="@dimen/_2sdp"
+                            android:elevation="@dimen/_1sdp"
+                            app:cardBackgroundColor="@color/white"
+                            app:cardCornerRadius="@dimen/_4sdp"
+                            app:cardElevation="@dimen/_3sdp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                >
+
+                                <com.tc.crm.juzdevz.spinner.JDSpinner
+                                    android:id="@+id/spnArrTerminal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:spinnerMode="dropdown"
+                                    tools:listitem="@layout/layout_spinner" />
+
+
+                            </LinearLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            style="@style/medium_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="@string/arrival_time"
+                            android:textSize="@dimen/_8sdp" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvArrDate"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_margin="@dimen/_2sdp"
+                                android:layout_weight="1"
+                                android:elevation="@dimen/_1sdp"
+                                app:cardBackgroundColor="@color/white"
+                                app:cardCornerRadius="@dimen/_4sdp"
+                                app:cardElevation="@dimen/_3sdp">
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    android:paddingHorizontal="@dimen/_5sdp">
+
+                                    <TextView
+                                        android:id="@+id/tvArrDate"
+                                        style="@style/medium_text"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="start|center"
+                                        android:paddingHorizontal="@dimen/_5sdp"
+                                        android:hint="DD-MM-YYYY"
+                                        android:textSize="@dimen/_11sdp" />
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_19sdp"
+                                        android:layout_height="@dimen/_19sdp"
+                                        android:layout_centerVertical="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:padding="@dimen/_3sdp"
+                                        android:src="@drawable/calendar"
+                                        app:tint="#7E7E7E" />
+
+                                </RelativeLayout>
+
+                            </com.google.android.material.card.MaterialCardView>
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cvArrTime"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_margin="@dimen/_2sdp"
+                                android:layout_weight="1"
+                                android:elevation="@dimen/_1sdp"
+                                app:cardBackgroundColor="@color/white"
+                                app:cardCornerRadius="@dimen/_4sdp"
+                                app:cardElevation="@dimen/_3sdp">
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    android:paddingHorizontal="@dimen/_5sdp">
+
+                                    <TextView
+                                        android:id="@+id/tvArrTime"
+                                        style="@style/medium_text"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="start|center"
+                                        android:paddingHorizontal="@dimen/_5sdp"
+                                        android:hint="HH:MM"
+                                        android:textSize="@dimen/_11sdp" />
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_19sdp"
+                                        android:layout_height="@dimen/_19sdp"
+                                        android:layout_centerVertical="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:padding="@dimen/_3sdp"
+                                        android:src="@drawable/clock"
+                                        app:tint="#7E7E7E" />
+
+                                </RelativeLayout>
+
+                            </com.google.android.material.card.MaterialCardView>
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnUpdateOutboundTravelCancel"
+                            style="@style/outlineButton"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_35sdp"
+                            android:layout_marginVertical="@dimen/_15sdp"
+                            android:layout_weight="1"
+                            android:backgroundTint="@android:color/transparent"
+                            android:text="@string/cancel"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/_11sdp"
+                            app:cornerRadius="@dimen/_5sdp"
+                            app:strokeColor="@color/colorPrimary"
+                            app:strokeWidth="@dimen/_1sdp" />
+
+                        <View
+                            android:layout_width="@dimen/_5sdp"
+                            android:layout_height="@dimen/_10sdp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnUpdateOutboundTravel"
+                            style="@style/medium_text"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_35sdp"
+                            android:layout_marginVertical="@dimen/_15sdp"
+                            android:layout_weight="1"
+                            android:backgroundTint="@color/colorPrimary"
+                            android:text="@string/update"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_11sdp"
+                            app:cornerRadius="@dimen/_5sdp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
             </RelativeLayout>
 
 

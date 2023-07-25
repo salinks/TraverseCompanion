@@ -97,6 +97,7 @@ class ClientDetailsFragment : BaseFragment(),
         binding.lnrCallParent.setOnClickListener(this)
         binding.lnrCallClient.setOnClickListener(this)
         binding.lnrEditContact.setOnClickListener(this)
+        binding.lnrEditOutboundTravel.setOnClickListener(this)
 
 
     }
@@ -220,6 +221,7 @@ class ClientDetailsFragment : BaseFragment(),
     @SuppressLint("SetTextI18n")
     private fun showValuesInVies() {
         if (clientInfo != null) {
+            showViews()
 
             binding.tvClientName.text = clientInfo.givenName + " " + clientInfo.surname
             binding.tvSlNUm.text = "SL NO : " + clientInfo.slnumber
@@ -407,7 +409,7 @@ class ClientDetailsFragment : BaseFragment(),
             var addressLine = ""
             if (!TextUtils.isEmpty(clientInfo.addressOne)) {
                 addressLine =
-                     clientInfo.addressOne + ", " + clientInfo.addressTwo + ", " + clientInfo.cityState + ", Pin Code - " + clientInfo.pinCode
+                    clientInfo.addressOne + ", " + clientInfo.addressTwo + ", " + clientInfo.cityState + ", Pin Code - " + clientInfo.pinCode
             }
             binding.tvEmail.text = ":  " + clientInfo.emailAddress
             binding.tvPhone.text = ":  +" + clientInfo.phoneCode + clientInfo.phoneNumber
@@ -444,8 +446,62 @@ class ClientDetailsFragment : BaseFragment(),
             }
 
 
+            if (clientInfo.canEdit && clientInfo.cStatusActive) {
+                binding.lnrEditOutboundTravel.visibility = View.VISIBLE
+            } else {
+                binding.lnrEditOutboundTravel.visibility = View.INVISIBLE
+            }
+
+            binding.tvDeparture.text = ":  "
+            if (!TextUtils.isEmpty(clientInfo.departure) && !clientInfo.departure.equals("0000-00-00 00:00:00")) {
+                binding.tvDeparture.text = ":  " + DateUtils.oneFormatToAnother(
+                    clientInfo.departure,
+                    "yyyy-MM-dd HH:mm:ss",
+                    "dd-MM-yyyy  hh:mm a"
+                )
+            }
+            binding.tvArrival.text = ":  "
+            if (!TextUtils.isEmpty(clientInfo.dateOfArrival) && !clientInfo.dateOfArrival.equals("0000-00-00 00:00:00")) {
+                binding.tvArrival.text = ":  " + DateUtils.oneFormatToAnother(
+                    clientInfo.dateOfArrival,
+                    "yyyy-MM-dd HH:mm:ss",
+                    "dd-MM-yyyy  hh:mm a"
+                )
+            }
+            if (TextUtils.isEmpty(clientInfo.ticketStatus) || clientInfo.ticketStatus.equals("")) {
+                CLIENT_DETAILS.clientInfo.ticketStatus ="NO";
+                clientInfo.ticketStatus ="NO";
+            }
+
+
+            binding.tvDestination.text =
+                ":  " + if (TextUtils.isEmpty(clientInfo.countryId) || clientInfo.countryId.equals("0")) {
+                    ""
+                } else {
+                    clientInfo.cName
+                }
+            binding.tvTicketStatus.text = ":  " + if (clientInfo.ticketStatus.equals("YES")) {
+                "Confirmed"
+            } else {
+                "Awaiting"
+            }
+            binding.tvAirport.text = ":  " + if (TextUtils.isEmpty(clientInfo.airportCode)) {
+                ""
+            } else {
+                clientInfo.airportName + " ( " + clientInfo.airportCode + ")"
+            }
+            binding.tvTerminal.text = ":  " + clientInfo.arrTerminal
+
+
 //======================================
         }
+    }
+
+    private fun showViews() {
+        binding.cvSystemData.visibility = View.VISIBLE
+        binding.cvClientBasicInfo.visibility = View.VISIBLE
+        binding.cvContcat.visibility = View.VISIBLE
+        binding.cvOutBoundTravel.visibility = View.VISIBLE
     }
 
     private fun showCountryEmptyMessage() {
@@ -580,21 +636,31 @@ class ClientDetailsFragment : BaseFragment(),
                 GlobalVariables.ViewName = "STAFF"
                 pushFragment(EditClientFragment())
             }
+
             R.id.lnrEditContact -> {
                 GlobalVariables.ViewName = "CONTACT_INFO"
                 pushFragment(EditClientFragment())
             }
 
             R.id.lnrCallAbroadPhone -> {
-                (activity as HomeActivity).makeCall("+"+clientInfo.cmPhoneCode+clientInfo.aPhoneNumber)
+                (activity as HomeActivity).makeCall("+" + clientInfo.cmPhoneCode + clientInfo.aPhoneNumber)
             }
 
             R.id.lnrCallParent -> {
-                (activity as HomeActivity).makeCall("+"+clientInfo.pPhoneCode+clientInfo.pPhoneNumber)
+                (activity as HomeActivity).makeCall("+" + clientInfo.pPhoneCode + clientInfo.pPhoneNumber)
             }
 
             R.id.lnrCallClient -> {
-                (activity as HomeActivity).makeCall("+"+clientInfo.phoneCode+clientInfo.phoneNumber)
+                (activity as HomeActivity).makeCall("+" + clientInfo.phoneCode + clientInfo.phoneNumber)
+            }
+
+            R.id.lnrEditOutboundTravel -> {
+                if (TextUtils.isEmpty(clientInfo.countryId) || clientInfo.countryId == "0") {
+                    showCountryEmptyMessage()
+                } else {
+                    GlobalVariables.ViewName = "OUTBOUND_TRAVEL"
+                    pushFragment(EditClientFragment())
+                }
             }
 
 

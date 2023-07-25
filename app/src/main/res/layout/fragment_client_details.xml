@@ -405,6 +405,8 @@
                     android:layout_marginHorizontal="@dimen/_5sdp"
                     android:layout_marginVertical="@dimen/_5sdp"
                     app:cardBackgroundColor="@color/white"
+                    android:id="@+id/cvSystemData"
+                    android:visibility="gone"
                     app:cardCornerRadius="@dimen/_5sdp"
                     app:cardElevation="0dp">
 
@@ -721,11 +723,12 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-
+                    android:id="@+id/cvClientBasicInfo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_5sdp"
                     android:layout_marginVertical="@dimen/_5sdp"
+                    android:visibility="gone"
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="@dimen/_5sdp"
                     app:cardElevation="0dp">
@@ -920,7 +923,8 @@
 
 
                 <com.google.android.material.card.MaterialCardView
-
+                    android:id="@+id/cvContcat"
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_5sdp"
@@ -1267,6 +1271,264 @@
                                     android:textSize="@dimen/_9sdp" />
 
                             </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvOutBoundTravel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/_5sdp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_30sdp">
+
+                            <TextView
+
+                                style="@style/big_text_bold"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center|start"
+                                android:paddingHorizontal="@dimen/_10sdp"
+                                android:text="@string/outbound_travel"
+                                android:textColor="@color/themeTextColor"
+                                android:textSize="@dimen/_10sdp" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height=".5dp"
+                                android:layout_alignParentBottom="true"
+                                android:background="@color/grey" />
+
+                            <LinearLayout
+                                android:id="@+id/lnrEditOutboundTravel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="@dimen/_5sdp"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:paddingHorizontal="@dimen/_5sdp">
+
+                                <ImageView
+                                    android:layout_width="@dimen/_20sdp"
+                                    android:layout_height="@dimen/_20sdp"
+                                    android:layout_marginHorizontal="@dimen/_5sdp"
+                                    android:padding="@dimen/_3sdp"
+                                    android:src="@drawable/edit" />
+
+                                <TextView
+                                    style="@style/medium_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center|start"
+                                    android:text="@string/edit_info"
+                                    android:textColor="@color/themeTextColor"
+                                    android:textSize="@dimen/_9sdp" />
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lnrOutboundTravel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingVertical="@dimen/_5sdp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+
+                                    style="@style/medium_text"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:gravity="center|start"
+                                    android:paddingStart="@dimen/_5sdp"
+                                    android:text="@string/ticket_status"
+                                    android:textColor="@color/themeTextColor"
+                                    android:textSize="@dimen/_9sdp" />
+
+                                <TextView
+
+                                    android:id="@+id/tvTicketStatus"
+                                    style="@style/medium_text"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="7"
+                                    android:gravity="center|start"
+                                    android:textColor="@color/themeTextColor"
+                                    android:textSize="@dimen/_9sdp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+
+                                    style="@style/medium_text"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:gravity="center|start"
+                                    android:paddingStart="@dimen/_5sdp"
+                                    android:text="@string/departure"
+                                    android:textColor="@color/themeTextColor"
+                                    android:textSize="@dimen/_9sdp" />
+
+                                <TextView
+
+                                    android:id="@+id/tvDeparture"
+                                    style="@style/medium_text"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="7"
+                                    android:gravity="center|start"
+                                    android:textColor="@color/themeTextColor"
+                                    android:textSize="@dimen/_9sdp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+
+                                    style="@style/medium_text"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:gravity="center|start"
+                                    android:paddingStart="@dimen/_5sdp"
+                                    android:text="@string/destination"
+                                    android:textColor="@color/themeTextColor"
+                                    android:textSize="@dimen/_9sdp" />
+
+                                <TextView
+
+                                    android:id="@+id/tvDestination"
+                                    style="@style/medium_text"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="7"
+                                    android:gravity="center|start"
+                                    android:textColor="@color/themeTextColor"
+                                    android:textSize="@dimen/_9sdp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+
+                                    style="@style/medium_text"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:gravity="center|start"
+                                    android:paddingStart="@dimen/_5sdp"
+                                    android:text="@string/airport"
+                                    android:textColor="@color/themeTextColor"
+                                    android:textSize="@dimen/_9sdp" />
+
+                                <TextView
+
+                                    android:id="@+id/tvAirport"
+                                    style="@style/medium_text"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="7"
+                                    android:gravity="center|start"
+                                    android:textColor="@color/themeTextColor"
+                                    android:textSize="@dimen/_9sdp" />
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+
+                                    style="@style/medium_text"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:gravity="center|start"
+                                    android:paddingStart="@dimen/_5sdp"
+                                    android:text="@string/terminal"
+                                    android:textColor="@color/themeTextColor"
+                                    android:textSize="@dimen/_9sdp" />
+
+                                <TextView
+
+                                    android:id="@+id/tvTerminal"
+                                    style="@style/medium_text"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="7"
+                                    android:gravity="center|start"
+                                    android:textColor="@color/themeTextColor"
+                                    android:textSize="@dimen/_9sdp" />
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+
+                                    style="@style/medium_text"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:gravity="center|start"
+                                    android:paddingStart="@dimen/_5sdp"
+                                    android:text="@string/arrival"
+                                    android:textColor="@color/themeTextColor"
+                                    android:textSize="@dimen/_9sdp" />
+
+                                <TextView
+
+                                    android:id="@+id/tvArrival"
+                                    style="@style/medium_text"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="7"
+                                    android:gravity="center|start"
+                                    android:textColor="@color/themeTextColor"
+                                    android:textSize="@dimen/_9sdp" />
+
+                            </LinearLayout>
+
+
                         </LinearLayout>
 
                     </LinearLayout>

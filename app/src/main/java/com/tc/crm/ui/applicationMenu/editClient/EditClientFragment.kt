@@ -6,6 +6,7 @@ import android.content.Context
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
@@ -182,7 +183,45 @@ class EditClientFragment : BaseFragment(),
                 showTitle("Edit Contact Info")
                 binding.lnrContactInfoUpdate.visibility = View.VISIBLE
             }
+
+            "OUTBOUND_TRAVEL" -> {
+                setOutboundData()
+                showTitle("Edit Outbound Travel Info")
+                binding.lnrOutboundTravelUpdate.visibility = View.VISIBLE
+            }
         }
+    }
+
+    private fun setOutboundData() {
+        val textFormatter =
+            SpinnerTextFormatter<StaticDataModel> { person -> SpannableString(person.value) }
+
+        binding.spnTicketStatus.setSpinnerTextFormatter(textFormatter)
+        binding.spnTicketStatus.setSelectedTextFormatter(textFormatter)
+
+        binding.spnTicketStatus.attachDataSource(CLIENT_DETAILS.ticketStatus)
+        if (!TextUtils.isEmpty(CLIENT_DETAILS.clientInfo.ticketStatus) && CLIENT_DETAILS.clientInfo.ticketStatus != "") {
+            var ind =
+                CLIENT_DETAILS.ticketStatus.indexOf(CLIENT_DETAILS.ticketStatus.filter { it.id == CLIENT_DETAILS.clientInfo.ticketStatus }[0])
+            binding.spnTicketStatus.selectedIndex = ind
+        }
+
+        if (CLIENT_DETAILS.clientInfo.ticketStatus.equals("YES", ignoreCase = true)) {
+            binding.lnrTravelSection.visibility = View.VISIBLE
+        } else {
+            binding.lnrTravelSection.visibility = View.GONE
+        }
+
+        binding.spnTicketStatus.setOnSpinnerItemSelectedListener { parent, view, position, id ->
+            var a = parent.getItemAtPosition(position) as StaticDataModel
+            if (a.id.equals("YES", ignoreCase = true)) {
+                binding.lnrTravelSection.visibility = View.VISIBLE
+            } else {
+                binding.lnrTravelSection.visibility = View.GONE
+            }
+        }
+
+
     }
 
     @SuppressLint("SetTextI18n")
@@ -500,7 +539,7 @@ class EditClientFragment : BaseFragment(),
             }
 
             R.id.btnUpdateContactInfo -> {
-               prepareContactInfoUpdate()
+                prepareContactInfoUpdate()
             }
 
 
@@ -509,20 +548,23 @@ class EditClientFragment : BaseFragment(),
     }
 
     private fun prepareContactInfoUpdate() {
-        if (TextUtils.isEmpty(binding.etClientPhoneNumber.text.toString().trim()) || binding.etClientPhoneNumber.text.toString().length <8) {
+        if (TextUtils.isEmpty(
+                binding.etClientPhoneNumber.text.toString().trim()
+            ) || binding.etClientPhoneNumber.text.toString().length < 8
+        ) {
             showMessage(2, "Please enter client a phone number")
-           return
+            return
         }
 
-        if (!TextUtils.isEmpty(binding.etEmailAddress.text.toString().trim())){
-            if(!TCUtils.isEmailValid(binding.etEmailAddress.text.toString())){
+        if (!TextUtils.isEmpty(binding.etEmailAddress.text.toString().trim())) {
+            if (!TCUtils.isEmailValid(binding.etEmailAddress.text.toString())) {
                 showMessage(2, "Please enter a valid email address")
                 return
             }
         }
 
-        if (!TextUtils.isEmpty(binding.etPincode.text.toString().trim())){
-            if(binding.etPincode.text.toString().length <6){
+        if (!TextUtils.isEmpty(binding.etPincode.text.toString().trim())) {
+            if (binding.etPincode.text.toString().length < 6) {
                 showMessage(2, "Please enter a valid Pin Code")
                 return
             }
@@ -542,9 +584,9 @@ class EditClientFragment : BaseFragment(),
         req.cPhoneCode = cPhoneCode.phonecode
         req.pPhoneCode = pPhoneCode.phonecode
         req.addressOne = binding.etAddressLineOne.text.toString()
-        req.addressTwo =binding.etAddressLineTwo.text.toString()
-        req.cityState =binding.etCity.text.toString()
-        req.pinCode =binding.etPincode.text.toString()
+        req.addressTwo = binding.etAddressLineTwo.text.toString()
+        req.cityState = binding.etCity.text.toString()
+        req.pinCode = binding.etPincode.text.toString()
 
         showAlertDialog(0, requireActivity(), "Please Wait", "")
         mPresenter?.updateContactInfo(req)
